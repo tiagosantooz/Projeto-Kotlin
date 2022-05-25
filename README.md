@@ -7,3 +7,4 @@ A aplicação destina-se a utilizadores de um ginásio fictício, onde eles pude
 Informação como planos de treino, cargas, horários como forma de gerir as entradas e as saídas por parte do administrador, informações de refeições/suplementação. 
 
 
+![image](https://user-images.githubusercontent.com/17239693/170381393-1953c7fb-b28d-4548-90f2-1c2c3e13f1da.png)

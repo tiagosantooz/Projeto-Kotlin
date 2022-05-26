@@ -13,12 +13,13 @@ data class Utilizador(
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
 
-        valores.put(Tabela_UTILIZADOR.CAMPO_NOME, nome)
-        valores.put(Tabela_UTILIZADOR.CAMPO_IDADE, idade)
-        valores.put(Tabela_UTILIZADOR.CAMPO_SEXO, sexo)
-        valores.put(Tabela_UTILIZADOR.CAMPO_PESO, peso)
-        valores.put(Tabela_UTILIZADOR.CAMPO_ALTURA, altura)
+        valores.put(TabelaDButilizador.CAMPO_NOME, nome)
+        valores.put(TabelaDButilizador.CAMPO_IDADE, idade)
+        valores.put(TabelaDButilizador.CAMPO_SEXO, sexo)
+        valores.put(TabelaDButilizador.CAMPO_PESO, peso)
+        valores.put(TabelaDButilizador.CAMPO_ALTURA, altura)
 
         return valores
     }
 }
+

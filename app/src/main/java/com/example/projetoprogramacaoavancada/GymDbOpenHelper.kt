@@ -15,7 +15,8 @@ class GymDbOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME, null,
         TODO("Not yet implemented")
         requireNotNull(db)
 
-        Tabela_UTILIZADOR(db).cria()
+        TabelaDButilizador(db).cria()
+        TabelaDBexercicio(db).cria()
 
     }
 

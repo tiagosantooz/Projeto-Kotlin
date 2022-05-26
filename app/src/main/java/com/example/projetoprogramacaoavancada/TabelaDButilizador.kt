@@ -3,7 +3,7 @@ package com.example.projetoprogramacaoavancada
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class Tabela_UTILIZADOR(val db: SQLiteDatabase) {
+class TabelaDButilizador(val db: SQLiteDatabase) {
     fun cria() {
         db.execSQL("CREATE TABLE $NOME (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "$CAMPO_NOME TEXT NOT NULL, " +

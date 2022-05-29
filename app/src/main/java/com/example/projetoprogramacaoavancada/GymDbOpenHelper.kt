@@ -12,12 +12,13 @@ class GymDbOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME, null,
      * @param db The database.
      */
     override fun onCreate(db: SQLiteDatabase?) {
-        TODO("Not yet implemented")
+
         requireNotNull(db)
 
         TabelaDButilizador(db).cria()
         TabelaDBexercicio(db).cria()
         TabelaDBalimento(db).cria()
+
 
     }
 

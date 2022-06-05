@@ -8,7 +8,9 @@ data class Utilizador(
     var sexo: String,
     var idade: Long,
     var peso : Long,
-    var altura : Long
+    var altura : Long,
+    var iDtreino : Long,
+    var idDieta : Long
 ) {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
@@ -18,6 +20,8 @@ data class Utilizador(
         valores.put(TabelaDButilizador.CAMPO_SEXO, sexo)
         valores.put(TabelaDButilizador.CAMPO_PESO, peso)
         valores.put(TabelaDButilizador.CAMPO_ALTURA, altura)
+        valores.put(TabelaDButilizador.CAMPO_TREINO_ID, iDtreino)
+        valores.put(TabelaDButilizador.CAMPO_DIETA_ID, idDieta)
 
         return valores
     }

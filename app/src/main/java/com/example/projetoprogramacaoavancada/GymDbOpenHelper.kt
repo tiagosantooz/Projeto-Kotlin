@@ -19,7 +19,7 @@ class GymDbOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME, null,
         TabelaDBexercicio(db).cria()
         TabelaDBalimento(db).cria()
         TabelaDBdieta(db).cria()
-
+        TabelaDBtreino(db).cria()
     }
 
     /**

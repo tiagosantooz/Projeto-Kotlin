@@ -14,6 +14,7 @@ data class Alimento(
         valores.put(TabelaDBalimento.CAMPO_NOME_ALIMENTO, nome)
         valores.put(TabelaDBalimento.CAMPO_QUANTIDADE_ALIMENTO, quantidade)
         valores.put(TabelaDBalimento.CAMPO_CALORIA_ALIMENTO, calorias)
+
         return valores
     }
 }

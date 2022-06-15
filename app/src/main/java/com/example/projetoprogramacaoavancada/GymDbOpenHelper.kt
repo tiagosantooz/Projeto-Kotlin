@@ -16,10 +16,14 @@ class GymDbOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME, null,
         requireNotNull(db)
 
         TabelaDButilizador(db).cria()
-        TabelaDBexercicio(db).cria()
-        TabelaDBalimento(db).cria()
         TabelaDBdieta(db).cria()
         TabelaDBtreino(db).cria()
+        TabelaDBexercicio(db).cria()
+        TabelaDBalimento(db).cria()
+
+
+
+
     }
 
     /**

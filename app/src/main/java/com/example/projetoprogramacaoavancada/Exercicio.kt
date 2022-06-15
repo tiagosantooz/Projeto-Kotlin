@@ -8,7 +8,8 @@ data class Exercicio(
     var descricao: String,
     var maquina: Long,
     var carga : Long,
-    var repeticoes : Long
+    var repeticoes : Long,
+    var idTreino : Long,
 ) {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
@@ -18,6 +19,7 @@ data class Exercicio(
         valores.put(TabelaDBexercicio.CAMPO_MAQUINA, maquina)
         valores.put(TabelaDBexercicio.CAMPO_CARGA, carga)
         valores.put(TabelaDBexercicio.CAMPO_REPETICOES, repeticoes)
+        valores.put(TabelaDBexercicio.CAMPO_TREINO_ID, idTreino)
 
         return valores
     }

@@ -15,7 +15,7 @@ class TabelaDBalimento (db : SQLiteDatabase) : TabelaDb(db, NOME) {
         const val CAMPO_NOME_ALIMENTO = "nome"
         const val CAMPO_QUANTIDADE_ALIMENTO = "quantidade"
         const val CAMPO_CALORIA_ALIMENTO = "calorias"
-        const val CAMPO_DIETA_ID = "IDdieta"
+        const val CAMPO_DIETA_ID = "iddieta"
     }
 }
 

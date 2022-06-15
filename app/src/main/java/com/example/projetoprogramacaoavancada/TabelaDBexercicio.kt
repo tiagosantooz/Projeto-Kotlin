@@ -15,7 +15,7 @@ class TabelaDBexercicio(db: SQLiteDatabase) : TabelaDb(db, NOME) {
         const val CAMPO_MAQUINA = "maquina"
         const val CAMPO_CARGA = "carga"
         const val CAMPO_REPETICOES = "repeticoes"
-        const val CAMPO_TREINO_ID = "idTreino"
+        const val CAMPO_TREINO_ID = "idtreino"
     }
 }
 

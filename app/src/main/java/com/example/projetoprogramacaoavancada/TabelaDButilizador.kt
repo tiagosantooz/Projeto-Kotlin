@@ -11,8 +11,7 @@ class TabelaDButilizador(db: SQLiteDatabase) : TabelaDb(db,NOME){
                 "$CAMPO_IDADE INTEGER NOT NULL," +
                 "$CAMPO_PESO INTEGER NOT NULL," +
                 "$CAMPO_ALTURA INTEGER NOT NULL," +
-                "FOREIGN KEY ($CAMPO_TREINO_ID) REFERENCES ${TabelaDBtreino.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT," +
-                "FOREIGN KEY ($CAMPO_DIETA_ID) REFERENCES ${TabelaDBdieta.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+                "FOREIGN KEY ($CAMPO_TREINO_ID) REFERENCES ${TabelaDBtreino.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
     companion object {
@@ -23,7 +22,6 @@ class TabelaDButilizador(db: SQLiteDatabase) : TabelaDb(db,NOME){
         const val CAMPO_PESO = "peso"
         const val CAMPO_ALTURA = "altura"
         const val CAMPO_TREINO_ID = "treinoId"
-        const val CAMPO_DIETA_ID = "dietaId"
     }
 }
 

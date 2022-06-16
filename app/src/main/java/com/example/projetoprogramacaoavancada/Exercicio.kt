@@ -3,13 +3,14 @@ package com.example.projetoprogramacaoavancada
 import android.content.ContentValues
 
 data class Exercicio(
-    var id: Long = -1,
+
     var nome : String,
     var descricao: String,
     var maquina: Long,
     var carga : Long,
     var repeticoes : Long,
-    var idtreino : Long
+    var idtreino : Long,
+    var id: Long = -1
 
 )
 

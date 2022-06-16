@@ -3,9 +3,10 @@ package com.example.projetoprogramacaoavancada
 import android.content.ContentValues
 
 data class Treino(
-    var id: Long = -1 ,
+
     var descricao: String,
-    var idutilizador: Long
+    var idutilizador: Long,
+    var id: Long = -1 ,
 
 ) {
     fun toContentValues() : ContentValues {

@@ -82,4 +82,26 @@ class BaseDadosTeste {
 
     }
 
+    @Test
+    fun consegueAlterarAlimento(){
+        val db = getWritableDatabase()
+
+        val alimento = Alimento(1,"cenoura",5,5,1)
+        insereAlimento(db, alimento)
+
+        alimento.nome = "couve"
+
+        val registosAlterados = TabelaDBalimento(db).update(
+            alimento.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${alimento.id}")
+        )
+
+        assertEquals(1,registosAlterados)
+
+
+        db.close()
+    }
+
+
 }

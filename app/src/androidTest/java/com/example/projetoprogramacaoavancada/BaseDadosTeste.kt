@@ -64,7 +64,7 @@ class BaseDadosTeste {
     fun consegueinserirAlimento(){
         val db = getWritableDatabase()
 
-        val alimento = Alimento(1,"couve",2,2,1)
+        val alimento = Alimento(1,"couve",5,6,1)
 
         insereAlimento(db, alimento)
     }

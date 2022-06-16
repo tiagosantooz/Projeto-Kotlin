@@ -68,7 +68,7 @@ class BaseDadosTeste {
 
         insereAlimento(db, alimento)
     }
-
+    @Test
     fun consegueinserirDieta(){
         val db = getWritableDatabase()
 

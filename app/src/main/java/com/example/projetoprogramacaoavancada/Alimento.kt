@@ -3,11 +3,11 @@ package com.example.projetoprogramacaoavancada
 import android.content.ContentValues
 
 data class Alimento(
-    var id: Long,
+    var id: Long = -1,
     var nome : String,
     var quantidade: Int,
     var calorias: Int,
-    var iddieta: Long = -1
+    var iddieta: Long
 )
 {
     fun toContentValues() : ContentValues {

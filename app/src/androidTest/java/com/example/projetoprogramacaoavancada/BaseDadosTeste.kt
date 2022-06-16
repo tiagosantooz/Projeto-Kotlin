@@ -82,25 +82,54 @@ class BaseDadosTeste {
 
     }
 
+
     @Test
-    fun consegueAlterarAlimento(){
+    fun consegueAlterarDieta(){
         val db = getWritableDatabase()
 
-        val alimento = Alimento(1,"cenoura",5,5,1)
-        insereAlimento(db, alimento)
+        val dieta = Dieta(1,"semaçucar","Dieta sem açucar",1)
+        insereDieta(db, dieta)
 
-        alimento.nome = "couve"
+        dieta.nome = "semcalorias"
 
-        val registosAlterados = TabelaDBalimento(db).update(
-            alimento.toContentValues(),
+        val registosAlterados = TabelaDBdieta(db).update(
+            dieta.toContentValues(),
             "${BaseColumns._ID}=?",
-            arrayOf("${alimento.id}")
+            arrayOf("${dieta.id}")
         )
 
         assertEquals(1,registosAlterados)
 
 
         db.close()
+    }
+
+
+    @Test
+    fun consegueALterarAlimento(){
+        val db = getWritableDatabase()
+
+        val dieta1 = Dieta(1,"x1","x1",1)
+        insereDieta(db, dieta1)
+
+        val dieta2 = Dieta(2,"x2","x2",1)
+        insereDieta(db, dieta2)
+
+        val alimento = Alimento(1,"Alimento1",1,2,dieta1.id)
+        insereAlimento(db, alimento)
+
+        alimento.nome = "couve"
+        alimento.calorias = 7
+        alimento.iddieta = dieta2.id
+
+        val registosAlterados = TabelaDBalimento(db).update(
+            alimento.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf("${alimento.id}"))
+
+        assertEquals(1,registosAlterados)
+        db.close()
+
     }
 
 

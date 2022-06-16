@@ -27,7 +27,7 @@ class BaseDadosTeste {
         dieta.id = TabelaDBdieta(db).insert(dieta.toContentValues())
         assertNotEquals(-1, dieta.id)
     }
-
+/*
     private fun insereExercicio(db: SQLiteDatabase, exercicio: Exercicio) {
         exercicio.id = TabelaDBexercicio(db).insert(exercicio.toContentValues())
         assertNotEquals(-1, exercicio.id)
@@ -42,7 +42,7 @@ class BaseDadosTeste {
         utilizador.id = TabelaDBdieta(db).insert(utilizador.toContentValues())
         assertNotEquals(-1, utilizador.id)
     }
-
+*/
 
 
     @Before

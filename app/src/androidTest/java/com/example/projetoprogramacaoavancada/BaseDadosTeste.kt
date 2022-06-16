@@ -61,22 +61,22 @@ class BaseDadosTeste {
     }
 
     @Test
-    fun consegueinserirAlimento(){
-        val db = getWritableDatabase()
-
-        val alimento = Alimento(1,"couve",5,6,1)
-
-        insereAlimento(db, alimento)
-    }
-    @Test
     fun consegueinserirDieta(){
         val db = getWritableDatabase()
 
-        val alimento = Alimento(1,"Couve",1,50,1)
-        insereAlimento(db, alimento)
+        val dieta = Dieta("sugar-free","Dieta sem açucar",1)
 
-        val dieta = Dieta(1,"sugarfree","semaçucar",1)
         insereDieta(db, dieta)
+    }
+    @Test
+    fun consegueinserirAlimento(){
+        val db = getWritableDatabase()
+
+        val dieta = Dieta("sugar-free","Sem açucar",1)
+        insereDieta(db, dieta)
+
+        val alimento = Alimento("couve",1,1,1)
+        insereAlimento(db, alimento)
 
         db.close()
 
@@ -87,7 +87,7 @@ class BaseDadosTeste {
     fun consegueAlterarDieta(){
         val db = getWritableDatabase()
 
-        val dieta = Dieta(1,"semaçucar","Dieta sem açucar",1)
+        val dieta = Dieta("sugar-free","Dieta sem açucar",1)
         insereDieta(db, dieta)
 
         dieta.nome = "semcalorias"
@@ -106,16 +106,16 @@ class BaseDadosTeste {
 
 
     @Test
-    fun consegueALterarAlimento(){
+    fun consegueAlterarAlimento(){
         val db = getWritableDatabase()
 
-        val dieta1 = Dieta(1,"x1","x1",1)
+        val dieta1 = Dieta("x1","x1",1)
         insereDieta(db, dieta1)
 
-        val dieta2 = Dieta(2,"x2","x2",1)
+        val dieta2 = Dieta("x2","x2",1)
         insereDieta(db, dieta2)
 
-        val alimento = Alimento(1,"Alimento1",1,2,dieta1.id)
+        val alimento = Alimento("Couve",1,1,dieta1.id)
         insereAlimento(db, alimento)
 
         alimento.nome = "couve"
@@ -130,6 +130,42 @@ class BaseDadosTeste {
         assertEquals(1,registosAlterados)
         db.close()
 
+    }
+
+    @Test
+    fun consegueEliminarDieta(){
+
+        val db = getWritableDatabase()
+
+        val dieta = Dieta("teste","test",1)
+        insereDieta(db ,dieta)
+
+        val registosEliminados = TabelaDBdieta(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${dieta.id}"))
+
+        assertEquals(1,registosEliminados)
+        db.close()
+
+    }
+
+    @Test
+    fun consegueEliminarAlimento(){
+        val db = getWritableDatabase()
+
+        val dieta = Dieta("sugar-free","Dieta sem açucar",1)
+        insereDieta(db,dieta)
+
+        val alimento = Alimento("couve",2,2,dieta.id)
+        insereAlimento(db,alimento)
+
+        val registoEliminados = TabelaDBalimento(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${alimento.id}"))
+
+        assertEquals(1,registoEliminados)
+
+        db.close()
     }
 
 

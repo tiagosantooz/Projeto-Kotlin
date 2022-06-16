@@ -6,7 +6,7 @@ data class Dieta(
     var id: Long,
     var nome : String,
     var descricao: String,
-    var idutilizador: Long
+    var idutilizador: Long = -1
 ) {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()

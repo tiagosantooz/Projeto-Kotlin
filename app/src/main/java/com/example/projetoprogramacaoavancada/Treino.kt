@@ -5,7 +5,8 @@ import android.content.ContentValues
 data class Treino(
     var id: Long,
     var descricao: String,
-    var idutilizador: Long
+    var idutilizador: Long = -1
+
 ) {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()

@@ -9,8 +9,11 @@ data class Exercicio(
     var maquina: Long,
     var carga : Long,
     var repeticoes : Long,
-    var idtreino : Long,
-) {
+    var idtreino : Long = -1
+
+)
+
+{
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
 

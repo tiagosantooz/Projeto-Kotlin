@@ -3,14 +3,13 @@ package com.example.projetoprogramacaoavancada
 import android.content.ContentValues
 
 data class Utilizador(
-    var id: Long,
+    var id: Long = -1,
     var nome : String,
     var sexo: String,
     var idade: Long,
     var peso : Long,
     var altura : Long,
-    var iDtreino : Long,
-    var idDieta : Long
+
 ) {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()

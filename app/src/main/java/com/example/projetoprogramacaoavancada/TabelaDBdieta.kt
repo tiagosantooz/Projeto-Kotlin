@@ -5,7 +5,11 @@ import android.provider.BaseColumns
 
 class TabelaDBdieta(db: SQLiteDatabase) : TabelaDb(db, NOME){
      override fun cria() {
-        db.execSQL("CREATE TABLE $NOME (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT , $CAMPO_NOME TEXT NOT NULL , $CAMPO_DESCRICAO TEXT NOT NULL , FOREIGN KEY ($CAMPO_UTILIZADOR_ID) REFERENCES ${TabelaDButilizador.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+        db.execSQL("CREATE TABLE $NOME (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT , " +
+                "$CAMPO_NOME TEXT NOT NULL , " +
+                "$CAMPO_DESCRICAO TEXT NOT NULL , " +
+                "$CAMPO_UTILIZADOR_ID INTEGER NOT NULL , " +
+                "FOREIGN KEY ($CAMPO_UTILIZADOR_ID) REFERENCES ${TabelaDButilizador.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
     companion object {

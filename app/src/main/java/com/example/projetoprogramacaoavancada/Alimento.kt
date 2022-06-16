@@ -7,7 +7,7 @@ data class Alimento(
     var nome : String,
     var quantidade: Int,
     var calorias: Int,
-    var iddieta: Long
+    var iddieta: Long = -1
 )
 {
     fun toContentValues() : ContentValues {

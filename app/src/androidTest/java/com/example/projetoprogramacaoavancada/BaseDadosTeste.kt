@@ -45,7 +45,7 @@ class BaseDadosTeste {
 
 
 
-    @Test
+    @Before
     fun apagaBaseDados() {
         appContext().deleteDatabase(GymDbOpenHelper.NOME)
     }

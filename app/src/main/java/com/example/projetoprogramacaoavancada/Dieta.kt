@@ -1,6 +1,8 @@
 package com.example.projetoprogramacaoavancada
 
 import android.content.ContentValues
+import android.database.Cursor
+import android.provider.BaseColumns
 
 data class Dieta(
 
@@ -17,5 +19,22 @@ data class Dieta(
         valores.put(TabelaDBdieta.CAMPO_UTILIZADOR_ID, idutilizador)
 
         return valores
+    }
+
+    companion object{
+        fun fromCursor(cursor: Cursor): Dieta{
+         val posId = cursor.getColumnIndex(BaseColumns._ID)
+         val posNome = cursor.getColumnIndex(TabelaDBdieta.CAMPO_NOME)
+         val posDesc = cursor.getColumnIndex(TabelaDBdieta.CAMPO_DESCRICAO)
+         val posIdUt = cursor.getColumnIndex(TabelaDBdieta.CAMPO_UTILIZADOR_ID)
+
+         val id = cursor.getLong(posId)
+         val nome = cursor.getString(posNome)
+         val descricao = cursor.getString(posDesc)
+         val idutilizador = cursor.getLong(posIdUt)
+
+         return Dieta(nome, descricao, idutilizador, id)
+
+        }
     }
 }

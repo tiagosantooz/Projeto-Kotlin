@@ -10,9 +10,7 @@ class TabelaDBexercicio(db: SQLiteDatabase) : TabelaDb(db, NOME) {
                 "$CAMPO_DESCRICAO TEXT NOT NULL , " +
                 "$CAMPO_MAQUINA TEXT NOT NULL , " +
                 "$CAMPO_CARGA INTEGER NOT NULL , " +
-                "$CAMPO_REPETICOES INTEGER NOT NULL , " +
-                "$CAMPO_TREINO_ID INTEGER NOT NULL , " +
-                "FOREIGN KEY ($CAMPO_TREINO_ID) REFERENCES ${TabelaDBtreino.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+                "$CAMPO_REPETICOES INTEGER NOT NULL)")
     }
 
     companion object {
@@ -22,7 +20,7 @@ class TabelaDBexercicio(db: SQLiteDatabase) : TabelaDb(db, NOME) {
         const val CAMPO_MAQUINA = "maquina"
         const val CAMPO_CARGA = "carga"
         const val CAMPO_REPETICOES = "repeticoes"
-        const val CAMPO_TREINO_ID = "idtreino"
     }
 }
+
 

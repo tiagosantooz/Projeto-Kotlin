@@ -9,7 +9,6 @@ data class Exercicio(
     var maquina: Long,
     var carga : Long,
     var repeticoes : Long,
-    var idtreino : Long,
     var id: Long = -1
 
 )
@@ -23,7 +22,7 @@ data class Exercicio(
         valores.put(TabelaDBexercicio.CAMPO_MAQUINA, maquina)
         valores.put(TabelaDBexercicio.CAMPO_CARGA, carga)
         valores.put(TabelaDBexercicio.CAMPO_REPETICOES, repeticoes)
-        valores.put(TabelaDBexercicio.CAMPO_TREINO_ID, idtreino)
+
 
         return valores
     }

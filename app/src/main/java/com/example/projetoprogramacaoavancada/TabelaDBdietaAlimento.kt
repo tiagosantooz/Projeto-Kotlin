@@ -15,6 +15,8 @@ class TabelaDBdietaAlimento(db : SQLiteDatabase) : TabelaDb(db, NOME) {
         const val NOME = "pa_treino_exercicio"
         const val CAMPO_ID_ALIMENTO = "alimentoid"
         const val CAMPO_ID_DIETA  = "dietaid"
+
+        val TODAS_COLUNAS = arrayOf(CAMPO_ID_ALIMENTO, CAMPO_ID_DIETA)
     }
 }
 

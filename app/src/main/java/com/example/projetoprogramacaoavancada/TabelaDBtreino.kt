@@ -15,5 +15,7 @@ class TabelaDBtreino(db: SQLiteDatabase) : TabelaDb(db,NOME){
         const val NOME = "pa_treino"
         const val CAMPO_DESCRICAO = "descricao"
         const val CAMPO_UTILIZADOR_ID = "utilizadorid"
+
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DESCRICAO, CAMPO_UTILIZADOR_ID)
     }
 }

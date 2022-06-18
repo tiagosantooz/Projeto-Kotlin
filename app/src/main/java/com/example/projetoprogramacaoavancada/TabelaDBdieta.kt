@@ -17,6 +17,8 @@ class TabelaDBdieta(db: SQLiteDatabase) : TabelaDb(db, NOME){
         const val CAMPO_NOME = "nome"
         const val CAMPO_DESCRICAO = "descricao"
         const val CAMPO_UTILIZADOR_ID = "utilizadorid"
+
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_DESCRICAO, CAMPO_UTILIZADOR_ID)
     }
 }
 

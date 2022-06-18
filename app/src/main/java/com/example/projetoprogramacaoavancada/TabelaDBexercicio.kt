@@ -20,6 +20,8 @@ class TabelaDBexercicio(db: SQLiteDatabase) : TabelaDb(db, NOME) {
         const val CAMPO_MAQUINA = "maquina"
         const val CAMPO_CARGA = "carga"
         const val CAMPO_REPETICOES = "repeticoes"
+
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_DESCRICAO, CAMPO_MAQUINA, CAMPO_CARGA, CAMPO_REPETICOES)
     }
 }
 

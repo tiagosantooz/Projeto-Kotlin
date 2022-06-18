@@ -20,6 +20,9 @@ class TabelaDButilizador(db: SQLiteDatabase) : TabelaDb(db,NOME){
         const val CAMPO_IDADE = "idade"
         const val CAMPO_PESO = "peso"
         const val CAMPO_ALTURA = "altura"
+
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_SEXO, CAMPO_IDADE, CAMPO_PESO,
+            CAMPO_ALTURA)
     }
 }
 

@@ -3,8 +3,8 @@ package com.example.projetoprogramacaoavancada
 import android.content.ContentValues
 
 data class DietaAlimento (
-    var idalimento : Long = -1,
-    var iddieta : Long = -1
+    var idalimento : Long,
+    var iddieta : Long
 )
 {
     fun toContentValues() : ContentValues {

@@ -188,10 +188,35 @@ class BaseDadosTeste {
         assertTrue(cursor.moveToNext())
 
         val dietaDB = Dieta.fromCursor(cursor)
-
         assertEquals(dieta, dietaDB)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueLerAlimento(){
+        val db = getWritableDatabase()
+
+        val alimento = Alimento("cenoura",5,5)
+        insereAlimento(db, alimento)
+
+        val cursor = TabelaDBalimento(db).query(
+            TabelaDBalimento.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${alimento.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val AlmDB = Alimento.fromCursor(cursor)
+        assertEquals(alimento,AlmDB)
 
         db.close()
 
     }
+
 }

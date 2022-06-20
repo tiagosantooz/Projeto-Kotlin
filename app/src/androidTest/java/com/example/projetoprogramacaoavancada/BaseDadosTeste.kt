@@ -168,4 +168,30 @@ class BaseDadosTeste {
         db.close()
     }
 
+    @Test
+    fun consegueLerdieta(){
+        val db = getWritableDatabase()
+
+        val dieta = Dieta("SugarFree","Dieta sem Açúcar",1)
+        insereDieta(db, dieta)
+
+        val cursor = TabelaDBdieta(db).query(
+            TabelaDBdieta.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${dieta.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1,cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val dietaDB = Dieta.fromCursor(cursor)
+
+        assertEquals(dieta, dietaDB)
+
+        db.close()
+
+    }
 }

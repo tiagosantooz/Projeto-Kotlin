@@ -120,7 +120,7 @@ class BaseDadosTeste {
 
         alimento.nome = "couve"
         alimento.calorias = 7
-        alimento.iddieta = dieta2.id
+
 
         val registosAlterados = TabelaDBalimento(db).update(
             alimento.toContentValues(),

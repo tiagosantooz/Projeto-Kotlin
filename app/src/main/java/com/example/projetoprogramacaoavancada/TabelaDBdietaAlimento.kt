@@ -12,7 +12,7 @@ class TabelaDBdietaAlimento(db : SQLiteDatabase) : TabelaDb(db, NOME) {
     }
 
     companion object{
-        const val NOME = "pa_treino_exercicio"
+        const val NOME = "pa_dieta_alimento"
         const val CAMPO_ID_ALIMENTO = "alimentoid"
         const val CAMPO_ID_DIETA  = "dietaid"
 

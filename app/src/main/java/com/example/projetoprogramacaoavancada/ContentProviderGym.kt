@@ -5,7 +5,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 
-class ContentProviderTreino : ContentProvider(){
+class ContentProviderGym : ContentProvider() {
     override fun onCreate(): Boolean {
         TODO("Not yet implemented")
     }
@@ -40,4 +40,5 @@ class ContentProviderTreino : ContentProvider(){
     ): Int {
         TODO("Not yet implemented")
     }
+
 }

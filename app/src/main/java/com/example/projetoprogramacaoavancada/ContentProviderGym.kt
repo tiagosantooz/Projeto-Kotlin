@@ -71,7 +71,26 @@ class ContentProviderGym : ContentProvider() {
 
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.readableDatabase
+
+        requireNotNull(values)
+
+        val id = when (getUriMatcher().match(uri)) {
+            URI_UTILIZADORES -> TabelaDButilizador(db).insert(values)
+            URI_DIETAS -> TabelaDBdieta(db).insert(values)
+            URI_ALIMENTOS -> TabelaDBalimento(db).insert(values)
+            URI_TREINOS -> TabelaDBtreino(db).insert(values)
+            URI_EXERCICIOS -> TabelaDBexercicio(db).insert(values)
+
+            else -> -1
+        }
+
+        db.close()
+
+        if(id==-1L) return null
+
+        return Uri.withAppendedPath(uri, "$id")
+
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {

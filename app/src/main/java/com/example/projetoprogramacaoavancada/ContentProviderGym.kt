@@ -71,7 +71,7 @@ class ContentProviderGym : ContentProvider() {
 
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        val db = dbOpenHelper!!.readableDatabase
+        val db = dbOpenHelper!!.writableDatabase
 
         requireNotNull(values)
 
@@ -94,7 +94,22 @@ class ContentProviderGym : ContentProvider() {
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.writableDatabase
+
+        val id = uri.lastPathSegment
+
+        val registosApagados = when (getUriMatcher().match(uri)) {
+            URI_UTILIZADOR_ESPECIFICO -> TabelaDButilizador(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
+            URI_DIETA_ESPECIFA -> TabelaDBdieta(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
+            URI_TREINO_ESPECIFICO -> TabelaDBtreino(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
+            URI_ALIMENTO_ESPECIFICO -> TabelaDBalimento(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
+            URI_EXERCICIOS_ESPECIFICO -> TabelaDBexercicio(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
+            else -> 0
+        }
+
+        db.close()
+
+        return registosApagados
     }
 
     override fun update(

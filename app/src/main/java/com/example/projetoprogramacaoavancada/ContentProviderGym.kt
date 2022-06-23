@@ -5,12 +5,13 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import android.provider.BaseColumns
 
 class ContentProviderGym : ContentProvider() {
-    var db : GymDbOpenHelper? = null
+    var dbOpenHelper : GymDbOpenHelper? = null
 
     override fun onCreate(): Boolean {
-        db = GymDbOpenHelper(context)
+        dbOpenHelper = GymDbOpenHelper(context)
 
         return true
     }
@@ -22,11 +23,38 @@ class ContentProviderGym : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.readableDatabase
+
+        requireNotNull(projection)
+        val colunas = projection as Array<String>
+
+        val argsSeleccao = selectionArgs as Array<String>?
+
+        val id = uri.lastPathSegment
+
+        val cursor = when (getUriMatcher().match(uri)) {
+            URI_UTILIZADORES -> TabelaDButilizador(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
+            URI_UTILIZADOR_ESPECIFICO -> TabelaDButilizador(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
+            URI_DIETAS -> TabelaDBdieta(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
+            URI_DIETA_ESPECIFA -> TabelaDBdieta(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
+            URI_TREINOS -> TabelaDBtreino(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
+            URI_TREINO_ESPECIFICO -> TabelaDBtreino(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
+            URI_ALIMENTOS -> TabelaDBalimento(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
+            URI_ALIMENTO_ESPECIFICO-> TabelaDBalimento(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
+            URI_EXERCICIOS -> TabelaDBexercicio(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
+            URI_EXERCICIOS_ESPECIFICO -> TabelaDBexercicio(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
+
+            else -> null
+        }
+
+        db.close()
+
+        return cursor
     }
 
     override fun getType(uri: Uri): String? =
         when(getUriMatcher().match(uri)){
+
             URI_UTILIZADORES -> "$MULTIPLOS_REGISTOS/${TabelaDButilizador.NOME}"
             URI_UTILIZADOR_ESPECIFICO -> "$UNICO_REGISTO/${TabelaDButilizador.NOME}"
             URI_DIETAS -> "$MULTIPLOS_REGISTOS/${TabelaDBdieta.NOME}"

@@ -30,7 +30,7 @@ class TreinoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.button4.setOnClickListener {
-            findNavController().navigate(R.id.action_TreinoFragment_to_FirstFragment2)
+            findNavController().navigate(R.id.action_treinoFragment_to_FirstFragment)
         }
 
 

@@ -15,8 +15,8 @@
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
         <action
-            android:id="@+id/action_FirstFragment_to_TreinoFragment"
-            app:destination="@id/TreinoFragment" />
+            android:id="@+id/action_FirstFragment_to_treinoFragment"
+            app:destination="@id/treinoFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -30,15 +30,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/TreinoFragment"
-        app:destination="@+id/FirstFragment" >
-
+        android:id="@+id/treinoFragment"
+        android:name="com.example.projetoprogramacaoavancada.TreinoFragment"
+        android:label="fragment_treino"
+        tools:layout="@layout/fragment_treino" >
         <action
-            android:id="@+id/action_TreinoFragment_to_FirstFragment2"
+            android:id="@+id/action_treinoFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
-
-
 
 
 </navigation>

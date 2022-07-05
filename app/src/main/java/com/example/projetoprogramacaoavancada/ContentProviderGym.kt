@@ -47,7 +47,6 @@ class ContentProviderGym : ContentProvider() {
             else -> null
         }
 
-        db.close()
 
         return cursor
     }

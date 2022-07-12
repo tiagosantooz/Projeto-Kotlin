@@ -37,6 +37,19 @@
         <action
             android:id="@+id/action_treinoFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_treinoFragment_to_exercicioFragment"
+            app:destination="@id/exercicioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exercicioFragment"
+        android:name="com.example.projetoprogramacaoavancada.exercicioFragment"
+        android:label="fragment_exercicio"
+        tools:layout="@layout/fragment_exercicio" >
+
+        <action
+            android:id="@+id/action_exercicioFragment_to_treinoFragment"
+            app:destination="@id/treinoFragment" />
     </fragment>
 
 

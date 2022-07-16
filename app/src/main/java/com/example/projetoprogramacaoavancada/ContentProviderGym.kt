@@ -139,21 +139,28 @@ class ContentProviderGym : ContentProvider() {
     }
 
     companion object{
-        const val AUTHORITY = "com.example.projetoprogramacaoavancada"
+        private const val AUTHORITY = "com.example.projetoprogramacaoavancada"
 
-        const val URI_UTILIZADORES = 100
-        const val URI_UTILIZADOR_ESPECIFICO = 101
-        const val URI_DIETAS = 200
-        const val URI_DIETA_ESPECIFA = 201
-        const val URI_TREINOS = 300
-        const val URI_TREINO_ESPECIFICO = 301
-        const val URI_ALIMENTOS = 400
-        const val URI_ALIMENTO_ESPECIFICO = 401
-        const val URI_EXERCICIOS = 500
-        const val URI_EXERCICIOS_ESPECIFICO = 501
+        private const val URI_UTILIZADORES = 100
+        private const val URI_UTILIZADOR_ESPECIFICO = 101
+        private const val URI_DIETAS = 200
+        private const val URI_DIETA_ESPECIFA = 201
+        private const val URI_TREINOS = 300
+        private const val URI_TREINO_ESPECIFICO = 301
+        private const val URI_ALIMENTOS = 400
+        private const val URI_ALIMENTO_ESPECIFICO = 401
+        private const val URI_EXERCICIOS = 500
+        private const val URI_EXERCICIOS_ESPECIFICO = 501
 
-        const val UNICO_REGISTO = "vnd.android.cursor.item"
-        const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
+        private const val UNICO_REGISTO = "vnd.android.cursor.item"
+        private const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
+
+        private val ENDERECO_BASE = Uri.parse("content://$AUTHORITY")
+        val ENDERECO_UTILIZADORES = Uri.withAppendedPath(ENDERECO_BASE, TabelaDButilizador.NOME)
+        val ENDERECO_DIETAS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBdieta.NOME)
+        val ENDERECO_TREINOS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBtreino.NOME)
+        val ENDERECO_EXERCICIOS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBexercicio.NOME)
+        val ENDERECO_ALIMENTOS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBalimento.NOME)
 
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)

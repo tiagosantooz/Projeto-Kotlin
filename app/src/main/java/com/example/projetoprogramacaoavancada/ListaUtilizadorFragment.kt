@@ -9,6 +9,7 @@ import com.example.projetoprogramacaoavancada.databinding.FragmentListaUtilizado
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
 import android.database.Cursor
+import androidx.loader.content.CursorLoader
 
 class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -27,6 +28,8 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADOR, null, this)
+
     }
 
     override fun onDestroyView() {
@@ -34,9 +37,16 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         _binding = null
     }
 
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
-    }
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderGym.ENDERECO_UTILIZADORES,
+            TabelaDButilizador.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaDButilizador.CAMPO_NOME}"
+
+        )
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         TODO("Not yet implemented")
@@ -44,5 +54,9 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val ID_LOADER_UTILIZADOR = 0
     }
 }

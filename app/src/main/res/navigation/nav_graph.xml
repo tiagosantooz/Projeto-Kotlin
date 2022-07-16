@@ -12,11 +12,11 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_treinoFragment"
             app:destination="@id/treinoFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_listaUtilizadorFragment"
+            app:destination="@id/listaUtilizadorFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -50,6 +50,15 @@
         <action
             android:id="@+id/action_exercicioFragment_to_treinoFragment"
             app:destination="@id/treinoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaUtilizadorFragment"
+        android:name="com.example.projetoprogramacaoavancada.ListaUtilizadorFragment"
+        android:label="fragment_lista_utilizador"
+        tools:layout="@layout/fragment_lista_utilizador" >
+        <action
+            android:id="@+id/action_listaUtilizadorFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
 
 

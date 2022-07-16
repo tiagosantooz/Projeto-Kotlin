@@ -58,7 +58,10 @@ class MainActivity : AppCompatActivity() {
             opcaoProcessada = (fragment as FirstFragment).processaOpcaoMenu(item)
         } else if (fragment is ListaUtilizadorFragment) {
             opcaoProcessada = (fragment as ListaUtilizadorFragment).processaOpcaoMenu(item)
-        } else {
+        } else if (fragment is SecondFragment) {
+            opcaoProcessada = (fragment as SecondFragment).processaOpcaoMenu(item)
+        }
+        else {
             opcaoProcessada = false
         }
 

@@ -38,6 +38,9 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         adapterUtilizador = AdapterUtilizador(this)
         binding.recyclerViewUtilizador.adapter = adapterUtilizador
         binding.recyclerViewUtilizador.layoutManager = LinearLayoutManager(requireContext())
+
+        val activity = activity as MainActivity
+        activity.idMenuAtual = R.menu.menu_lista
     }
 
     override fun onDestroyView() {

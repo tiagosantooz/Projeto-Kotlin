@@ -11,6 +11,7 @@ import androidx.loader.content.Loader
 import android.database.Cursor
 import android.view.MenuItem
 import androidx.loader.content.CursorLoader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetoprogramacaoavancada.database.AdapterUtilizador
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
@@ -41,13 +42,17 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         binding.recyclerViewUtilizador.layoutManager = LinearLayoutManager(requireContext())
 
         val activity = activity as MainActivity
+        activity.fragment = this
         activity.idMenuAtual = R.menu.menu_lista
+
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
         CursorLoader(
@@ -70,7 +75,10 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
         when(item.itemId) {
-            R.id.action_inserir -> true
+            R.id.action_inserir -> {
+                findNavController().navigate(R.id.action_listaUtilizadorFragment_to_SecondFragment)
+                true
+            }
             R.id.action_alterar -> true
             R.id.action_eliminar -> true
             else -> false

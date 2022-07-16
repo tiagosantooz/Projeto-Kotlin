@@ -23,10 +23,9 @@
         android:name="com.example.projetoprogramacaoavancada.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_listaUtilizadorFragment"
+            app:destination="@id/listaUtilizadorFragment" />
     </fragment>
 
     <fragment

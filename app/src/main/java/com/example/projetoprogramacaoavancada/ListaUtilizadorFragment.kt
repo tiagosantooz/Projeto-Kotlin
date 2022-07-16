@@ -32,7 +32,7 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADOR, null, this)
 
-        adapterUtilizador = AdapterUtilizador()
+        adapterUtilizador = AdapterUtilizador(this)
         binding.recyclerViewUtilizador.adapter = adapterUtilizador
         binding.recyclerViewUtilizador.layoutManager = LinearLayoutManager(requireContext())
     }

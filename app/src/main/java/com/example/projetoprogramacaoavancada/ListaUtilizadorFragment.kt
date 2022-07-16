@@ -10,10 +10,12 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
 import android.database.Cursor
 import androidx.loader.content.CursorLoader
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentListaUtilizadorBinding? = null
+    private var adapterUtilizador : AdapterUtilizador? = null
 
     private val binding get() = _binding!!
 
@@ -30,6 +32,9 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADOR, null, this)
 
+        adapterUtilizador = AdapterUtilizador()
+        binding.recyclerViewUtilizador.adapter = adapterUtilizador
+        binding.recyclerViewUtilizador.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onDestroyView() {

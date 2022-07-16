@@ -1,4 +1,4 @@
-package com.example.projetoprogramacaoavancada
+package com.example.projetoprogramacaoavancada.database
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -40,7 +40,7 @@ class ContentProviderGym : ContentProvider() {
             URI_TREINOS -> TabelaDBtreino(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
             URI_TREINO_ESPECIFICO -> TabelaDBtreino(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
             URI_ALIMENTOS -> TabelaDBalimento(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
-            URI_ALIMENTO_ESPECIFICO-> TabelaDBalimento(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
+            URI_ALIMENTO_ESPECIFICO -> TabelaDBalimento(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
             URI_EXERCICIOS -> TabelaDBexercicio(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
             URI_EXERCICIOS_ESPECIFICO -> TabelaDBexercicio(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
 
@@ -167,13 +167,13 @@ class ContentProviderGym : ContentProvider() {
 
             uriMatcher.addURI(AUTHORITY, TabelaDButilizador.NOME, URI_UTILIZADORES)
             uriMatcher.addURI(AUTHORITY, "${TabelaDButilizador.NOME}/#", URI_UTILIZADOR_ESPECIFICO)
-            uriMatcher.addURI(AUTHORITY,TabelaDBdieta.NOME, URI_DIETAS)
+            uriMatcher.addURI(AUTHORITY, TabelaDBdieta.NOME, URI_DIETAS)
             uriMatcher.addURI(AUTHORITY,"${TabelaDBdieta.NOME}/#", URI_DIETA_ESPECIFA)
-            uriMatcher.addURI(AUTHORITY,TabelaDBtreino.NOME, URI_TREINOS)
+            uriMatcher.addURI(AUTHORITY, TabelaDBtreino.NOME, URI_TREINOS)
             uriMatcher.addURI(AUTHORITY,"${TabelaDBtreino.NOME}/#", URI_TREINO_ESPECIFICO)
-            uriMatcher.addURI(AUTHORITY,TabelaDBalimento.NOME, URI_ALIMENTOS)
+            uriMatcher.addURI(AUTHORITY, TabelaDBalimento.NOME, URI_ALIMENTOS)
             uriMatcher.addURI(AUTHORITY,"${TabelaDBalimento.NOME}/#", URI_ALIMENTO_ESPECIFICO)
-            uriMatcher.addURI(AUTHORITY,TabelaDBexercicio.NOME, URI_EXERCICIOS)
+            uriMatcher.addURI(AUTHORITY, TabelaDBexercicio.NOME, URI_EXERCICIOS)
             uriMatcher.addURI(AUTHORITY,"${TabelaDBexercicio.NOME}/#", URI_EXERCICIOS_ESPECIFICO)
 
             return uriMatcher

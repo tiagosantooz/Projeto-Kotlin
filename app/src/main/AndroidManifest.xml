@@ -26,7 +26,7 @@
         </activity>
         <provider
             android:authorities="com.example.projetoprogramacaoavancada"
-            android:name=".ContentProviderGym"
+            android:name=".database.ContentProviderGym"
             android:exported="false" />
     </application>
 

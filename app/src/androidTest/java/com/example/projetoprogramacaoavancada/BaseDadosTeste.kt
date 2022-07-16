@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.projetoprogramacaoavancada.database.*
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

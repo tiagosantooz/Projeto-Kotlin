@@ -1,9 +1,9 @@
-package com.example.projetoprogramacaoavancada
+package com.example.projetoprogramacaoavancada.database
 
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class TabelaDButilizador(db: SQLiteDatabase) : TabelaDb(db,NOME){
+class TabelaDButilizador(db: SQLiteDatabase) : TabelaDb(db, NOME){
     override fun cria() {
         db.execSQL("CREATE TABLE $NOME (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "$CAMPO_NOME TEXT NOT NULL, " +
@@ -22,7 +22,8 @@ class TabelaDButilizador(db: SQLiteDatabase) : TabelaDb(db,NOME){
         const val CAMPO_ALTURA = "altura"
 
         val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_SEXO, CAMPO_IDADE, CAMPO_PESO,
-            CAMPO_ALTURA)
+            CAMPO_ALTURA
+        )
     }
 }
 

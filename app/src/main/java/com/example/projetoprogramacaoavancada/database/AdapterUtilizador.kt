@@ -1,10 +1,12 @@
-package com.example.projetoprogramacaoavancada
+package com.example.projetoprogramacaoavancada.database
 
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projetoprogramacaoavancada.ListaUtilizadorFragment
+import com.example.projetoprogramacaoavancada.R
 
 class AdapterUtilizador(val fragment: ListaUtilizadorFragment) : RecyclerView.Adapter<AdapterUtilizador.ViewHolderUtilizador>() {
     var cursor: Cursor? = null
@@ -44,7 +46,7 @@ class AdapterUtilizador(val fragment: ListaUtilizadorFragment) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: ViewHolderUtilizador, position: Int) {
         cursor!!.moveToPosition(position)
-        holder.utilizador=Utilizador.fromCursor(cursor!!)
+        holder.utilizador= Utilizador.fromCursor(cursor!!)
     }
 
     override fun getItemCount(): Int {

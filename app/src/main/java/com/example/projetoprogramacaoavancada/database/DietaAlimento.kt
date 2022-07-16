@@ -1,4 +1,4 @@
-package com.example.projetoprogramacaoavancada
+package com.example.projetoprogramacaoavancada.database
 
 import android.content.ContentValues
 import android.database.Cursor
@@ -18,7 +18,7 @@ data class DietaAlimento (
     }
 
     companion object{
-        fun fromCursor(cursor: Cursor): DietaAlimento{
+        fun fromCursor(cursor: Cursor): DietaAlimento {
             val posIdAli = cursor.getColumnIndex(TabelaDBdietaAlimento.CAMPO_ID_ALIMENTO)
             val posIdDieta = cursor.getColumnIndex(TabelaDBdietaAlimento.CAMPO_ID_DIETA)
 

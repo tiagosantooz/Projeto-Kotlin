@@ -1,4 +1,4 @@
-package com.example.projetoprogramacaoavancada
+package com.example.projetoprogramacaoavancada.database
 
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns

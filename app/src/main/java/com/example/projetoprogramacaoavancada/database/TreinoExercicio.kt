@@ -1,8 +1,7 @@
-package com.example.projetoprogramacaoavancada
+package com.example.projetoprogramacaoavancada.database
 
 import android.content.ContentValues
 import android.database.Cursor
-import android.provider.BaseColumns
 
 data class TreinoExercicio (
     var idexercicio : Long,
@@ -19,7 +18,7 @@ data class TreinoExercicio (
     }
 
     companion object{
-        fun fromCursor(cursor: Cursor): TreinoExercicio{
+        fun fromCursor(cursor: Cursor): TreinoExercicio {
 
             val posIdEx = cursor.getColumnIndex(TabelaDBtreinoExercicio.CAMPO_ID_EXERCICIO)
             val posIdTrei = cursor.getColumnIndex(TabelaDBtreinoExercicio.CAMPO_ID_TREINO)

@@ -11,6 +11,9 @@ import androidx.loader.content.Loader
 import android.database.Cursor
 import androidx.loader.content.CursorLoader
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projetoprogramacaoavancada.database.AdapterUtilizador
+import com.example.projetoprogramacaoavancada.database.ContentProviderGym
+import com.example.projetoprogramacaoavancada.database.TabelaDButilizador
 
 class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 

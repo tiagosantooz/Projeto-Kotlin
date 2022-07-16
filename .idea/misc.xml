@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/drawable/ic_add.xml" value="0.191" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/activity_main.xml" value="0.178125" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/content_main.xml" value="0.178125" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/fragment_exercicio.xml" value="0.18333333333333332" />
@@ -14,6 +15,8 @@
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/fragment_treinofragement.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/item_utilizador.xml" value="0.2" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/item_utilzador.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/menu/menu_lista.xml" value="0.1828125" />
+        <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/menu/menu_main.xml" value="0.1828125" />
       </map>
     </option>
   </component>

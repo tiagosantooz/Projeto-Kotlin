@@ -48,12 +48,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textAge" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
-        android:text="Peso"
+        android:text="65 Kg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.projetoprogramacaoavancada.databinding.FragmentListaUtilizadorBinding
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.Loader
+import android.database.Cursor
 
-class ListaUtilizadorFragment : Fragment() {
+class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentListaUtilizadorBinding? = null
 
@@ -29,5 +32,17 @@ class ListaUtilizadorFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        TODO("Not yet implemented")
     }
 }

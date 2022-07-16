@@ -9,6 +9,7 @@ import com.example.projetoprogramacaoavancada.databinding.FragmentListaUtilizado
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.Loader
 import android.database.Cursor
+import android.view.MenuItem
 import androidx.loader.content.CursorLoader
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetoprogramacaoavancada.database.AdapterUtilizador
@@ -66,6 +67,14 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     override fun onLoaderReset(loader: Loader<Cursor>) {
         adapterUtilizador!!.cursor = null
     }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean =
+        when(item.itemId) {
+            R.id.action_inserir -> true
+            R.id.action_alterar -> true
+            R.id.action_eliminar -> true
+            else -> false
+        }
 
     companion object {
         const val ID_LOADER_UTILIZADOR = 0

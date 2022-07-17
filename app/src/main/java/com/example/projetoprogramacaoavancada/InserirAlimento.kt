@@ -1,5 +1,6 @@
 package com.example.projetoprogramacaoavancada
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,7 +21,7 @@ private var _binding: FragmentInserirAlimentoBinding? = null
 
 private val binding get() = _binding!!
 
-
+private var alimento: Alimento? = null
 
 
     override fun onCreateView(
@@ -43,7 +44,9 @@ private val binding get() = _binding!!
         val activity = requireActivity() as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_edicao
+
     }
+
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
     when(item.itemId) {
@@ -79,21 +82,39 @@ private val binding get() = _binding!!
             return
         }
 
-        insereAlimento(nomealimento,quantidadealimento,caloriaalimento)
+        val alimentoGuardado =
+            if(alimento==null){
+                insereAlimento(nomealimento,quantidadealimento,caloriaalimento)
+            } else {
+                alteraAlimento(nomealimento,quantidadealimento,caloriaalimento)
+            }
+
+        if (alimentoGuardado) {
+            Toast.makeText(requireContext(), "livro guardado com sucesso", Toast.LENGTH_LONG)
+                .show()
+            voltaListaAlimentos()
+        } else {
+            Snackbar.make(binding.editTextAlimentName, "erro guardar livro", Snackbar.LENGTH_INDEFINITE).show()
+            return
+        }
     }
 
-    private fun insereAlimento(nome: String, quantidade: String, calorias: String) {
+    private fun insereAlimento(nome: String, quantidade: String, calorias: String): Boolean {
         val alimento = Alimento(nome, quantidade.toInt(), calorias.toInt())
 
         val enderecoAlimentoInserido = requireActivity().contentResolver.insert(ContentProviderGym.ENDERECO_ALIMENTOS, alimento.toContentValues())
 
-        if(enderecoAlimentoInserido == null){
-            Snackbar.make(binding.editTextAlimentName, "Erro guardar alimento", Snackbar.LENGTH_INDEFINITE).show()
-            return
-        }
+        return enderecoAlimentoInserido!= null
+    }
 
-        Toast.makeText(requireContext(),"Alimento guardado com sucesso", Toast.LENGTH_LONG).show()
-        voltaListaAlimentos()
+    private fun alteraAlimento(nome: String, quantidade: String, calorias: String) : Boolean {
+        val alimento = Alimento(nome,quantidade.toInt(),calorias.toInt())
+
+        val enderecoAlimento = Uri.withAppendedPath(ContentProviderGym.ENDERECO_ALIMENTOS, "${this.alimento!!.id}")
+
+        val registosAlterados = requireActivity().contentResolver.update(enderecoAlimento, alimento.toContentValues(), null, null)
+
+        return registosAlterados == 1
     }
 
     private fun voltaListaAlimentos() {

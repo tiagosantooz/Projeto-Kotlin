@@ -13,12 +13,22 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetoprogramacaoavancada.database.AdapterAlimento
+import com.example.projetoprogramacaoavancada.database.Alimento
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
 import com.example.projetoprogramacaoavancada.database.TabelaDBalimento
 import com.example.projetoprogramacaoavancada.databinding.FragmentListaAlimentosBinding
 
 
 class ListaAlimentosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>  {
+
+    var alimentoSeleccionado : Alimento? = null
+        get() = field
+        set(value) {
+            if (value != field) {
+                field = value
+                (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field != null)
+            }
+        }
 
     private var _binding : FragmentListaAlimentosBinding? = null
     private var adapterAlimento : AdapterAlimento? = null

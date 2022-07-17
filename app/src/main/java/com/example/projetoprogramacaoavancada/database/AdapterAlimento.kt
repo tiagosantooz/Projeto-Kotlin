@@ -45,6 +45,7 @@ class AdapterAlimento(val fragment: ListaAlimentosFragment) : RecyclerView.Adapt
         private fun seleciona() {
             itemView.setBackgroundResource(android.R.color.holo_orange_light)
             viewHolderSelecionado = this
+            fragment.alimentoSeleccionado = alimento
         }
 
         private fun desseleciona() {

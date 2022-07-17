@@ -1,5 +1,7 @@
 package com.example.projetoprogramacaoavancada
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -66,8 +68,20 @@ class EliminarAlimentoFragment : Fragment() {
                 else -> false
             }
 
+    private fun eliminaAlimento() {
+        val alertDialog = AlertDialog.Builder(requireContext())
 
-        private fun eliminaAlimento() {
+        alertDialog.apply {
+            setTitle("Eliminar Alimento")
+            setMessage("Pretende eliminar o alimento? ")
+            setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener { dialogInterface, i ->  })
+            setPositiveButton("Eliminar", DialogInterface.OnClickListener { dialogInterface, i -> confirmaEliminaAlimento() })
+            show()
+        }
+    }
+
+
+        private fun confirmaEliminaAlimento() {
             val enderecoAlimento = Uri.withAppendedPath(ContentProviderGym.ENDERECO_ALIMENTOS, "${alimento.id}")
             val registosEliminados = requireActivity().contentResolver.delete(enderecoAlimento, null, null)
 

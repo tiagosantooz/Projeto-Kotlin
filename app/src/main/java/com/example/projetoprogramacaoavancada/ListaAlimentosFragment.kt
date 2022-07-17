@@ -24,10 +24,8 @@ class ListaAlimentosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     var alimentoSeleccionado : Alimento? = null
         get() = field
         set(value) {
-            if (value != field) {
-                field = value
-                (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field != null)
-            }
+            field = value
+            (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field != null)
         }
 
     private var _binding : FragmentListaAlimentosBinding? = null
@@ -72,7 +70,8 @@ class ListaAlimentosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-
+        if (_binding == null) return
+        adapterAlimento!!.cursor = null
     }
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean =

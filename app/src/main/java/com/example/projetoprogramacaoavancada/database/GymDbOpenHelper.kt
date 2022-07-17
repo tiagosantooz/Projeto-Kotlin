@@ -49,7 +49,7 @@ class GymDbOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME, null,
      * @param newVersion The new database version.
      */
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+
     }
 
     companion object {

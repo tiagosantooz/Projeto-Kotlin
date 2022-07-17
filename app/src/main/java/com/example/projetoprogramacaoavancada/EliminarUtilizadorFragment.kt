@@ -1,5 +1,6 @@
 package com.example.projetoprogramacaoavancada
 
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
 import com.example.projetoprogramacaoavancada.databinding.FragmentEliminarUtilizadorBinding
@@ -65,8 +67,19 @@ class EliminarUtilizadorFragment : Fragment() {
             }
             else -> false
         }
+    private fun eliminaUtilizador() {
+        val alertDialog = AlertDialog.Builder(requireContext())
 
-    private fun eliminaUtilizador(){
+        alertDialog.apply {
+            setTitle("Eliminar Utilizador")
+            setMessage("Tem a certeza que pretende eliminar o Utilizador")
+            setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener { dialogInterface, i ->  })
+            setPositiveButton("Eliminar", DialogInterface.OnClickListener { dialogInterface, i -> confirmaeliminaUtilizador() })
+            show()
+        }
+    }
+
+    private fun confirmaeliminaUtilizador(){
         val enderecoUtilizador = Uri.withAppendedPath(ContentProviderGym.ENDERECO_UTILIZADORES, "${utilizador.id}")
         val registosEliminados = requireActivity().contentResolver.delete(enderecoUtilizador,null,null)
 

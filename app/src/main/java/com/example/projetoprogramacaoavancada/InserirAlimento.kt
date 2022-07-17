@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.loader.app.LoaderManager
 import androidx.navigation.fragment.findNavController
 import com.example.projetoprogramacaoavancada.database.Alimento
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
@@ -27,9 +28,21 @@ private val binding get() = _binding!!
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentInserirAlimentoBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inserir_alimento, container, false)
+        _binding= FragmentInserirAlimentoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val activity = requireActivity() as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_edicao
     }
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean =

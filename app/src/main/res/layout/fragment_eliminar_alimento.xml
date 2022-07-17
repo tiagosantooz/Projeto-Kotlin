@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16sp"
-    tools:context=".EliminarUtilizadorFragment">
+    tools:context=".EliminarAlimentoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -31,18 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="24" />
-
-        <TextView
-            android:id="@+id/textViewPeso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="70" />
-
-        <TextView
-            android:id="@+id/textViewAltura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="181" />
 
     </LinearLayout>
 

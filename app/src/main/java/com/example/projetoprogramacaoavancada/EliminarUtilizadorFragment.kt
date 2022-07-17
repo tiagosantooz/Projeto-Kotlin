@@ -59,10 +59,12 @@ class EliminarUtilizadorFragment : Fragment() {
         when(item.itemId) {
             R.id.action_eliminar -> {
                 eliminaUtilizador()
+                (activity as MainActivity).atualizaTitulo("Lista de Utilizadores")
                 true
             }
             R.id.action_cancelar -> {
                 voltaListaUtilizador()
+                (activity as MainActivity).atualizaTitulo("Lista de Utilizadores")
                 true
             }
             else -> false

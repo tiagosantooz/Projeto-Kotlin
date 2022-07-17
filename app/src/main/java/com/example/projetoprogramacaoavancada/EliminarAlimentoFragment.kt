@@ -59,10 +59,12 @@ class EliminarAlimentoFragment : Fragment() {
             when (item.itemId) {
                 R.id.action_eliminar -> {
                     eliminaAlimento()
+                    (activity as MainActivity).atualizaTitulo("Lista Alimento")
                     true
                 }
                 R.id.action_cancelar -> {
                     voltaListaAlimentos()
+                    (activity as MainActivity).atualizaTitulo("Lista Alimento")
                     true
                 }
                 else -> false

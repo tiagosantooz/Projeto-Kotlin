@@ -16,9 +16,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetoprogramacaoavancada.database.AdapterUtilizador
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
 import com.example.projetoprogramacaoavancada.database.TabelaDButilizador
+import com.example.projetoprogramacaoavancada.database.Utilizador
 
 class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
-
+    var utilizadorSeleccionado : Utilizador? = null
+        get() = field
+        set(value) {
+            if (value != field) {
+                field = value
+                (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field != null)
+            }
+        }
     private var _binding: FragmentListaUtilizadorBinding? = null
     private var adapterUtilizador : AdapterUtilizador? = null
 

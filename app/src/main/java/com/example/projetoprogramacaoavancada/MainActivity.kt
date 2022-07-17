@@ -75,4 +75,9 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+    fun mostraOpcoesAlterarEliminar(mostra: Boolean) {
+        menu!!.findItem(R.id.action_alterar).setVisible(mostra)
+        menu!!.findItem(R.id.action_eliminar).setVisible(mostra)
+    }
 }

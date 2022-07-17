@@ -6,7 +6,7 @@ import android.provider.BaseColumns
 
 
 data class Alimento(
-    var nome : String,
+    var nome: String,
     var quantidade: Int,
     var calorias: Int,
     var id: Long = -1

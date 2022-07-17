@@ -1,16 +1,23 @@
 package com.example.projetoprogramacaoavancada
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.example.projetoprogramacaoavancada.database.ContentProviderGym
 import com.example.projetoprogramacaoavancada.databinding.FragmentEliminarUtilizadorBinding
 import com.example.projetoprogramacaoavancada.database.Utilizador
+import com.google.android.material.snackbar.Snackbar
 
 
 class EliminarUtilizadorFragment : Fragment() {
-private var _binding: FragmentEliminarUtilizadorBinding? = null
+
+    private var _binding: FragmentEliminarUtilizadorBinding? = null
 
     private val binding get() = _binding!!
 
@@ -46,5 +53,38 @@ private var _binding: FragmentEliminarUtilizadorBinding? = null
 
     }
 
+    fun processaOpcaoMenu(item: MenuItem) : Boolean =
+        when(item.itemId) {
+            R.id.action_eliminar -> {
+                eliminaUtilizador()
+                true
+            }
+            R.id.action_cancelar -> {
+                voltaListaUtilizador()
+                true
+            }
+            else -> false
+        }
 
+    private fun eliminaUtilizador(){
+        val enderecoUtilizador = Uri.withAppendedPath(ContentProviderGym.ENDERECO_UTILIZADORES, "${utilizador.id}")
+        val registosEliminados = requireActivity().contentResolver.delete(enderecoUtilizador,null,null)
+
+        if(registosEliminados!=1){
+            Snackbar.make(
+                binding.textViewNome,
+                "Erro eliminar utilizador",
+                Snackbar.LENGTH_INDEFINITE
+            ).show()
+            return
+        }
+
+        Toast.makeText(requireContext(), "Livro eliminado com sucesso", Toast.LENGTH_LONG).show()
+        voltaListaUtilizador()
+    }
+
+    private fun voltaListaUtilizador(){
+        val acao = EliminarUtilizadorFragmentDirections.actionEliminarUtilizadorFragmentToListaUtilizadorFragment()
+        findNavController().navigate(acao)
+    }
 }

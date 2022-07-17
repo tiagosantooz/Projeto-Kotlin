@@ -18,12 +18,18 @@ class AdapterUtilizador(val fragment: ListaUtilizadorFragment) : RecyclerView.Ad
             }
         }
 
-    class ViewHolderUtilizador(itemUtilizador: View) : RecyclerView.ViewHolder(itemUtilizador) {
+    var viewHolderSelecionado : ViewHolderUtilizador? = null
+
+    inner class ViewHolderUtilizador(itemUtilizador: View) : RecyclerView.ViewHolder(itemUtilizador), View.OnClickListener {
         val textName = itemUtilizador.findViewById<TextView>(R.id.textName)
         val textGender = itemUtilizador.findViewById<TextView>(R.id.textGender)
         val textAge = itemUtilizador.findViewById<TextView>(R.id.textAge)
         val textHeight = itemUtilizador.findViewById<TextView>(R.id.textHeight)
         val textWeight = itemUtilizador.findViewById<TextView>(R.id.textWeight)
+
+        init {
+            itemUtilizador.setOnClickListener(this)
+        }
 
         var utilizador : Utilizador? =  null
             get()=field
@@ -37,6 +43,20 @@ class AdapterUtilizador(val fragment: ListaUtilizadorFragment) : RecyclerView.Ad
                 textWeight.text=(utilizador?.peso?:"").toString()
 
             }
+
+        override fun onClick(v: View?) {
+            viewHolderSelecionado?.desseleciona()
+            seleciona()
+        }
+
+        private fun seleciona() {
+            itemView.setBackgroundResource(android.R.color.holo_orange_light)
+            viewHolderSelecionado = this
+        }
+
+        private fun desseleciona() {
+            itemView.setBackgroundResource(android.R.color.white)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderUtilizador {

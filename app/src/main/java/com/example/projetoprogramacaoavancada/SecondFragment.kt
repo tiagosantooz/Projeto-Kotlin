@@ -37,11 +37,6 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        binding.button3.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_listaUtilizadorFragment)
-        }
-
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_edicao
@@ -57,10 +52,11 @@ class SecondFragment : Fragment() {
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
         when(item.itemId) {
             R.id.action_guardar -> {
+                guardar()
                 true
             }
             R.id.action_cancelar -> {
-                findNavController().navigate(R.id.action_SecondFragment_to_listaUtilizadorFragment)
+                voltaListaUtilizadores()
                 true
             }
             else -> false

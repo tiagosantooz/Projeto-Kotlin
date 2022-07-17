@@ -74,6 +74,7 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         )
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        if (_binding == null) return
         adapterUtilizador!!.cursor = data
     }
 

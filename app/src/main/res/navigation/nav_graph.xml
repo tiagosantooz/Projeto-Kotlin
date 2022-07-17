@@ -18,8 +18,8 @@
             android:id="@+id/action_FirstFragment_to_listaUtilizadorFragment"
             app:destination="@id/listaUtilizadorFragment" />
         <action
-            android:id="@+id/action_FirstFragment_to_inserirAlimento"
-            app:destination="@id/inserirAlimento" />
+            android:id="@+id/action_FirstFragment_to_listaAlimentos"
+            app:destination="@id/listaAlimentos" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -88,7 +88,19 @@
         android:label="fragment_inserir_alimento"
         tools:layout="@layout/fragment_inserir_alimento" >
         <action
-            android:id="@+id/action_inserirAlimento_to_FirstFragment"
+            android:id="@+id/action_inserirAlimento_to_listaAlimentos"
+            app:destination="@id/listaAlimentos" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaAlimentos"
+        android:name="com.example.projetoprogramacaoavancada.ListaAlimentos"
+        android:label="fragment_lista_alimentos"
+        tools:layout="@layout/fragment_lista_alimentos" >
+        <action
+            android:id="@+id/action_listaAlimentos_to_inserirAlimento"
+            app:destination="@id/inserirAlimento" />
+        <action
+            android:id="@+id/action_listaAlimentos_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 

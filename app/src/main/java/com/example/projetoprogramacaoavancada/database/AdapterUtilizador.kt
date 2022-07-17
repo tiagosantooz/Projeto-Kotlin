@@ -55,7 +55,7 @@ class AdapterUtilizador(val fragment: ListaUtilizadorFragment) : RecyclerView.Ad
             fragment.utilizadorSeleccionado = utilizador
         }
 
-        private fun desseleciona() {
+        fun desseleciona() {
             itemView.setBackgroundResource(android.R.color.white)
         }
     }

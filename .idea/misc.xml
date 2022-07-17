@@ -6,6 +6,7 @@
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/drawable/ic_add.xml" value="0.191" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/activity_main.xml" value="0.178125" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/content_main.xml" value="0.178125" />
+        <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/fragment_eliminar_utilizador.xml" value="0.264" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/fragment_exercicio.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/fragment_first.xml" value="0.178125" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/fragment_lista_utilizador.xml" value="0.2210144927536232" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/item_utilizador.xml" value="0.2" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/layout/item_utilzador.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/menu/menu_edicao.xml" value="0.1" />
+        <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/menu/menu_eliminar.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/menu/menu_lista.xml" value="0.1828125" />
         <entry key="..\:/Users/tiago.a.santos/AndroidStudioProjects/ProjetoProgramacaoAvancada/app/src/main/res/menu/menu_main.xml" value="0.1828125" />
       </map>

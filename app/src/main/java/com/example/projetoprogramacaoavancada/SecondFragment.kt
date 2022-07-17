@@ -1,5 +1,6 @@
 package com.example.projetoprogramacaoavancada
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,6 +25,8 @@ class SecondFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private var utilizador: Utilizador? = null
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -40,6 +43,20 @@ class SecondFragment : Fragment() {
         val activity = requireActivity() as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_edicao
+
+        if (arguments != null){
+            utilizador = SecondFragmentArgs.fromBundle(requireArguments()).utilizador
+
+            if(utilizador!=null){
+
+                binding.editTextTextPersonName.setText(utilizador!!.nome)
+                binding.editTextTextEmailAddress.setText(utilizador!!.sexo)
+                binding.editTextNumber.setText((utilizador!!.idade).toString())
+                binding.editTextNumber2.setText((utilizador!!.peso).toString())
+                binding.editTextNumber3.setText((utilizador!!.altura).toString())
+
+            }
+        }
 
 
     }
@@ -63,6 +80,7 @@ class SecondFragment : Fragment() {
         }
 
     private fun guardar() {
+
         val nome = binding.editTextTextPersonName.text.toString()
         if (nome.isBlank()){
             binding.editTextTextPersonName.error = "Nome obriatório"
@@ -98,21 +116,44 @@ class SecondFragment : Fragment() {
             return
         }
 
-        insereUtilizador(nome, sexo, idade, peso, altura)
+        val utilizadorGuardado =
+            if(utilizador==null){
+                insereUtilizador(nome,sexo,idade,peso,altura)
+            } else{
+                alteraUtilizador(nome,sexo,idade,peso,altura)
+            }
+
+        if(utilizadorGuardado){
+            Toast.makeText(requireContext(), "Utilizador guardado com sucesso", Toast.LENGTH_LONG)
+                .show()
+            voltaListaUtilizadores()
+        } else{
+            Snackbar.make(binding.editTextTextPersonName, "Erro guardar utilizador", Snackbar.LENGTH_INDEFINITE).show()
+            return
+        }
+
+
     }
 
-    private fun insereUtilizador(nome: String, sexo: String, idade: String, peso: String, altura: String){
+    private fun insereUtilizador(nome: String, sexo: String, idade: String, peso: String, altura: String): Boolean {
         val utilizador = Utilizador(nome,sexo,idade.toLong(),peso.toLong(),altura.toLong())
 
         val enderecoUtilizadorInserido = requireActivity().contentResolver.insert(ContentProviderGym.ENDERECO_UTILIZADORES, utilizador.toContentValues())
 
-        if(enderecoUtilizadorInserido == null){
-            Snackbar.make(binding.editTextTextPersonName, "Erro guardar utilizador", Snackbar.LENGTH_INDEFINITE).show()
-            return
-        }
-            Toast.makeText(requireContext(),"Utilizador guardado com sucesso", Toast.LENGTH_LONG).show()
-            voltaListaUtilizadores()
-        }
+       return enderecoUtilizadorInserido != null
+
+    }
+
+    private fun alteraUtilizador (nome: String, sexo: String,idade: String, peso: String, altura: String): Boolean {
+        val utilizador = Utilizador(nome,sexo,idade.toLong(),peso.toLong(),altura.toLong())
+
+        val enderecoUtilizador = Uri.withAppendedPath(ContentProviderGym.ENDERECO_UTILIZADORES, "${this.utilizador!!.id}")
+
+        val registosAlterados = requireActivity().contentResolver.update(enderecoUtilizador, utilizador.toContentValues(),null,null)
+
+        return registosAlterados == 1
+
+    }
 
     private fun voltaListaUtilizadores(){
         findNavController().navigate(R.id.action_SecondFragment_to_listaUtilizadorFragment)

@@ -30,7 +30,7 @@
             android:name="utilizador"
             app:argType="com.example.projetoprogramacaoavancada.database.Utilizador"
             app:nullable="true"
-            android:defaultValue="@null"/>
+             />
     </fragment>
 
     <fragment

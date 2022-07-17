@@ -83,11 +83,15 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
         when(item.itemId) {
             R.id.action_inserir -> {
-                val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToSecondFragment()
+                val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToSecondFragment(null)
                 findNavController().navigate(acao)
                 true
             }
-            R.id.action_alterar -> true
+            R.id.action_alterar -> {
+                val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToSecondFragment(utilizadorSeleccionado)
+                findNavController().navigate(acao)
+                true
+            }
             R.id.action_eliminar -> {
                 val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToEliminarUtilizadorFragment(utilizadorSeleccionado!!)
                 findNavController().navigate(acao)

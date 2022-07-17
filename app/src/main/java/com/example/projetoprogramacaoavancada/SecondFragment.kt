@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.projetoprogramacaoavancada.databinding.FragmentSecondBinding
 import android.view.MenuItem
+import android.widget.Toast
+import com.example.projetoprogramacaoavancada.database.ContentProviderGym
+import com.example.projetoprogramacaoavancada.database.Utilizador
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -61,5 +65,61 @@ class SecondFragment : Fragment() {
             }
             else -> false
         }
+
+    private fun guardar() {
+        val nome = binding.editTextTextPersonName.text.toString()
+        if (nome.isBlank()){
+            binding.editTextTextPersonName.error = "Nome obriatório"
+            binding.editTextTextPersonName.requestFocus()
+            return
+        }
+
+        val sexo = binding.editTextTextEmailAddress.text.toString()
+        if (sexo.isBlank()){
+            binding.editTextTextEmailAddress.error = "Sexo obrigatório"
+            binding.editTextTextEmailAddress.requestFocus()
+            return
+        }
+
+        val idade = binding.editTextNumber.text.toString()
+        if (idade.isBlank()){
+            binding.editTextNumber.error = "Idade obrigatória"
+            binding.editTextNumber.requestFocus()
+            return
+        }
+
+        val peso = binding.editTextNumber2.text.toString()
+        if(peso.isBlank()){
+            binding.editTextNumber2.error="Peso obrigatório"
+            binding.editTextNumber2.requestFocus()
+            return
+        }
+
+        val altura = binding.editTextNumber3.text.toString()
+        if(altura.isBlank()){
+            binding.editTextNumber3.error="Altura obrigatória"
+            binding.editTextNumber3.requestFocus()
+            return
+        }
+
+        insereUtilizador(nome, sexo, idade, peso, altura)
+    }
+
+    private fun insereUtilizador(nome: String, sexo: String, idade: String, peso: String, altura: String){
+        val utilizador = Utilizador(nome,sexo,idade.toLong(),peso.toLong(),altura.toLong())
+
+        val enderecoUtilizadorInserido = requireActivity().contentResolver.insert(ContentProviderGym.ENDERECO_UTILIZADORES, utilizador.toContentValues())
+
+        if(enderecoUtilizadorInserido == null){
+            Snackbar.make(binding.editTextTextPersonName, "Erro guardar utilizador", Snackbar.LENGTH_INDEFINITE).show()
+            return
+        }
+            Toast.makeText(requireContext(),"Utilizador guardado com sucesso", Toast.LENGTH_LONG).show()
+            voltaListaUtilizadores()
+        }
+
+    private fun voltaListaUtilizadores(){
+        findNavController().navigate(R.id.action_SecondFragment_to_listaUtilizadorFragment)
+    }
 
 }

@@ -58,6 +58,18 @@
         <action
             android:id="@+id/action_listaUtilizadorFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_listaUtilizadorFragment_to_eliminarUtilizadorFragment"
+            app:destination="@id/eliminarUtilizadorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarUtilizadorFragment"
+        android:name="com.example.projetoprogramacaoavancada.EliminarUtilizadorFragment"
+        android:label="fragment_eliminar_utilizador"
+        tools:layout="@layout/fragment_eliminar_utilizador" >
+        <action
+            android:id="@+id/action_eliminarUtilizadorFragment_to_listaUtilizadorFragment"
+            app:destination="@id/listaUtilizadorFragment" />
     </fragment>
 
 

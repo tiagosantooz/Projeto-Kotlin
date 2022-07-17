@@ -51,7 +51,7 @@ class EliminarAlimentoFragment : Fragment() {
         binding.textViewCaloriasDelete.text = alimento.calorias.toString()
 
 
-
+    }
 
         fun processaOpcaoMenu(item: MenuItem): Boolean =
             when (item.itemId) {
@@ -65,7 +65,7 @@ class EliminarAlimentoFragment : Fragment() {
                 }
                 else -> false
             }
-    }
+
 
         private fun eliminaAlimento() {
             val enderecoAlimento = Uri.withAppendedPath(ContentProviderGym.ENDERECO_ALIMENTOS, "${alimento.id}")
@@ -88,6 +88,8 @@ class EliminarAlimentoFragment : Fragment() {
             val acao = EliminarAlimentoFragmentDirections.actionEliminarAlimentoFragmentToListaAlimentosFragment()
             findNavController().navigate(acao)
         }
+
+
 
 
 }

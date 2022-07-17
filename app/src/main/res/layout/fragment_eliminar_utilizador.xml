@@ -15,22 +15,22 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewNomeAlimentoDelete"
+            android:id="@+id/textViewNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tiago" />
+            android:text="TextView" />
 
         <TextView
-            android:id="@+id/textViewQuantidadeDelete"
+            android:id="@+id/textViewSexo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Feminino" />
+            android:text="TextView" />
 
         <TextView
-            android:id="@+id/textViewCaloriasDelete"
+            android:id="@+id/textViewIdade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="24" />
+            android:text="TextView" />
 
         <TextView
             android:id="@+id/textViewPeso"

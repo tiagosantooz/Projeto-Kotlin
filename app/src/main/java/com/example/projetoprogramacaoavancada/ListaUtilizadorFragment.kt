@@ -90,8 +90,10 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
             }
             R.id.action_alterar -> true
             R.id.action_eliminar -> {
-                val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToSecondFragment()
-                true}
+                val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToEliminarUtilizadorFragment(utilizadorSeleccionado!!)
+                findNavController().navigate(acao)
+                true
+            }
             else -> false
         }
 

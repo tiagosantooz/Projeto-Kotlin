@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_eliminarUtilizadorFragment_to_listaUtilizadorFragment"
             app:destination="@id/listaUtilizadorFragment" />
+        <argument
+            android:name="utilizador"
+            app:argType="com.example.projetoprogramacaoavancada.database.Utilizador" />
     </fragment>
 
 

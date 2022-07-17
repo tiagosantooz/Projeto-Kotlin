@@ -41,6 +41,10 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_treinoFragment)
         }
 
+        binding.buttonAliment.setOnClickListener{
+            findNavController().navigate(R.id.action_FirstFragment_to_listaAlimentosFragment)
+        }
+
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_main

@@ -18,8 +18,8 @@
             android:id="@+id/action_FirstFragment_to_listaUtilizadorFragment"
             app:destination="@id/listaUtilizadorFragment" />
         <action
-            android:id="@+id/action_FirstFragment_to_listaAlimentos"
-            app:destination="@id/listaAlimentos" />
+            android:id="@+id/action_FirstFragment_to_listaAlimentosFragment"
+            app:destination="@id/listaAlimentosFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -83,24 +83,12 @@
             app:argType="com.example.projetoprogramacaoavancada.database.Utilizador" />
     </fragment>
     <fragment
-        android:id="@+id/inserirAlimento"
-        android:name="com.example.projetoprogramacaoavancada.InserirAlimento"
-        android:label="fragment_inserir_alimento"
-        tools:layout="@layout/fragment_inserir_alimento" >
-        <action
-            android:id="@+id/action_inserirAlimento_to_listaAlimentos"
-            app:destination="@id/listaAlimentos" />
-    </fragment>
-    <fragment
-        android:id="@+id/listaAlimentos"
-        android:name="com.example.projetoprogramacaoavancada.ListaAlimentos"
+        android:id="@+id/listaAlimentosFragment"
+        android:name="com.example.projetoprogramacaoavancada.ListaAlimentosFragment"
         android:label="fragment_lista_alimentos"
         tools:layout="@layout/fragment_lista_alimentos" >
         <action
-            android:id="@+id/action_listaAlimentos_to_inserirAlimento"
-            app:destination="@id/inserirAlimento" />
-        <action
-            android:id="@+id/action_listaAlimentos_to_FirstFragment"
+            android:id="@+id/action_listaAlimentosFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 

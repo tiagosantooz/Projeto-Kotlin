@@ -66,7 +66,7 @@ class ListaAlimentosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-
+    adapterAlimento!!.cursor = data
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {

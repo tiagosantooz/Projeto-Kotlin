@@ -33,10 +33,7 @@ private var alimento: Alimento? = null
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,12 +42,29 @@ private var alimento: Alimento? = null
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_edicao
 
+        if(arguments != null){
+            alimento = InserirAlimentoArgs.fromBundle(requireArguments()).alimento
+
+            if(alimento!=null){
+                binding.editTextAlimentName.setText(alimento!!.nome)
+                binding.editTextNumberQuantity.setText((alimento!!.quantidade).toString())
+                binding.editTextNumberCalories.setText((alimento!!.calorias).toString())
+
+            }
+        }
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
     when(item.itemId) {
         R.id.action_guardar -> {
+            guardar()
             true
         }
         R.id.action_cancelar -> {
@@ -70,15 +84,15 @@ private var alimento: Alimento? = null
 
         val quantidadealimento = binding.editTextNumberQuantity.text.toString()
         if (quantidadealimento.isBlank()){
-            binding.editTextAlimentName.error = "Quantidade obrigatória"
-            binding.editTextAlimentName.requestFocus()
+            binding.editTextNumberQuantity.error = "Quantidade obrigatória"
+            binding.editTextNumberQuantity.requestFocus()
             return
         }
 
         val caloriaalimento = binding.editTextNumberCalories.text.toString()
         if (caloriaalimento.isBlank()){
-            binding.editTextAlimentName.error = "Calorias obrigatórias"
-            binding.editTextAlimentName.requestFocus()
+            binding.editTextNumberQuantity.error = "Calorias obrigatórias"
+            binding.editTextNumberQuantity.requestFocus()
             return
         }
 

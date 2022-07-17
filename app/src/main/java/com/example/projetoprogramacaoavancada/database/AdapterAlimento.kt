@@ -20,7 +20,7 @@ class AdapterAlimento(val fragment: ListaAlimentosFragment) : RecyclerView.Adapt
         }
     var viewHolderSelecionado : AdapterAlimento.ViewHolderAlimento? = null
     inner class ViewHolderAlimento(itemAlimento: View) : RecyclerView.ViewHolder(itemAlimento), View.OnClickListener{
-        val textNameAlimento = itemAlimento.findViewById<TextView>(R.id.textName)
+        val textNameAlimento = itemAlimento.findViewById<TextView>(R.id.textNameAliment)
         val textQuantity = itemAlimento.findViewById<TextView>(R.id.textQuantity)
         val textCalories = itemAlimento.findViewById<TextView>(R.id.textCalories)
 
@@ -29,10 +29,10 @@ class AdapterAlimento(val fragment: ListaAlimentosFragment) : RecyclerView.Adapt
         }
         var alimento : Alimento? = null
             get()=field
-            set(value: Alimento?){
+            set(value: Alimento?) {
                 field = value
 
-                textNameAlimento.text = alimento?.nome?: ""
+                textNameAlimento.text = alimento?.nome ?: ""
                 textCalories.text = (alimento?.calorias ?: "").toString()
                 textQuantity.text = (alimento?.quantidade?: "").toString()
             }
@@ -61,7 +61,8 @@ class AdapterAlimento(val fragment: ListaAlimentosFragment) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolderAlimento, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.moveToPosition(position)
+        holder.alimento = Alimento.fromCursor(cursor!!)
     }
 
     override fun getItemCount(): Int {

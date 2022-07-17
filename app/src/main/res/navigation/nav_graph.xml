@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_listaUtilizadorFragment"
             app:destination="@id/listaUtilizadorFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_inserirAlimento"
+            app:destination="@id/inserirAlimento" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -78,6 +81,15 @@
         <argument
             android:name="utilizador"
             app:argType="com.example.projetoprogramacaoavancada.database.Utilizador" />
+    </fragment>
+    <fragment
+        android:id="@+id/inserirAlimento"
+        android:name="com.example.projetoprogramacaoavancada.InserirAlimento"
+        android:label="fragment_inserir_alimento"
+        tools:layout="@layout/fragment_inserir_alimento" >
+        <action
+            android:id="@+id/action_inserirAlimento_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
 
 

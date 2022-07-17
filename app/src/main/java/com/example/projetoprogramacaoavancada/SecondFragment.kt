@@ -83,7 +83,7 @@ class SecondFragment : Fragment() {
 
         val nome = binding.editTextTextPersonName.text.toString()
         if (nome.isBlank()){
-            binding.editTextTextPersonName.error = "Nome obriatório"
+            binding.editTextTextPersonName.error = "Nome obrigatório"
             binding.editTextTextPersonName.requestFocus()
             return
         }

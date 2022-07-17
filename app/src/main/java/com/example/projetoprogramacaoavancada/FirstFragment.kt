@@ -35,14 +35,17 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_listaUtilizadorFragment)
+            (activity as MainActivity).atualizaTitulo("Lista de Utilizadores")
         }
 
         binding.button2.setOnClickListener{
             findNavController().navigate(R.id.action_FirstFragment_to_treinoFragment)
+            (activity as MainActivity).atualizaTitulo("Lista de Treinos")
         }
 
         binding.buttonAliment.setOnClickListener{
             findNavController().navigate(R.id.action_FirstFragment_to_listaAlimentosFragment)
+            (activity as MainActivity).atualizaTitulo("Lista de Alimentos")
         }
 
         val activity = activity as MainActivity

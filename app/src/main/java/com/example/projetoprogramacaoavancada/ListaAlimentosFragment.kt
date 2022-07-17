@@ -77,14 +77,21 @@ class ListaAlimentosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
         when(item.itemId) {
             R.id.action_inserir -> {
-                val acao = ListaAlimentosFragmentDirections.actionListaAlimentosFragmentToInserirAlimento()
+                val acao = ListaAlimentosFragmentDirections.actionListaAlimentosFragmentToInserirAlimento(null)
                 findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Inserir Alimento")
                 true
             }
-            R.id.action_alterar -> true
+            R.id.action_alterar -> {
+                val acao = ListaAlimentosFragmentDirections.actionListaAlimentosFragmentToInserirAlimento(alimentoSeleccionado)
+                findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Editar Alimento")
+                true
+            }
             R.id.action_eliminar -> {
                 val acao = ListaAlimentosFragmentDirections.actionListaAlimentosFragmentToEliminarAlimentoFragment(alimentoSeleccionado!!)
                 findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Eliminar Alimento")
                 true
             }
             else -> false

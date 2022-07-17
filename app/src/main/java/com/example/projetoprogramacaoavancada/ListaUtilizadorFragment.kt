@@ -85,16 +85,19 @@ class ListaUtilizadorFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
             R.id.action_inserir -> {
                 val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToSecondFragment(null)
                 findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Inserir Utilizador")
                 true
             }
             R.id.action_alterar -> {
                 val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToSecondFragment(utilizadorSeleccionado)
                 findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Editar Utilizador")
                 true
             }
             R.id.action_eliminar -> {
                 val acao = ListaUtilizadorFragmentDirections.actionListaUtilizadorFragmentToEliminarUtilizadorFragment(utilizadorSeleccionado!!)
                 findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Eliminar Utilizador")
                 true
             }
             else -> false

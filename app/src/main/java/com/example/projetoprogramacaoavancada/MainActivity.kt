@@ -89,4 +89,8 @@ class MainActivity : AppCompatActivity() {
         menu!!.findItem(R.id.action_alterar).setVisible(mostra)
         menu!!.findItem(R.id.action_eliminar).setVisible(mostra)
     }
+
+    fun atualizaTitulo(titulo: String) {
+        binding.toolbar.setTitle(titulo)
+    }
 }

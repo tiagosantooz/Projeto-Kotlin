@@ -80,14 +80,21 @@ class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
         when(item.itemId) {
             R.id.action_inserir -> {
-                val acao = ListaExerciciosFragmentDirections.actionListaExerciciosFragmentToInserirExercicioFragment()
+                val acao = ListaExerciciosFragmentDirections.actionListaExerciciosFragmentToInserirExercicioFragment(null)
                 findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Inserir Exercicio")
                 true
             }
-            R.id.action_alterar -> true
+            R.id.action_alterar -> {
+                val acao = ListaExerciciosFragmentDirections.actionListaExerciciosFragmentToInserirExercicioFragment(exercicioSelecionado)
+                findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Alterar Exercicio")
+                true
+            }
             R.id.action_eliminar -> {
                 val acao = ListaExerciciosFragmentDirections.actionListaExerciciosFragmentToEliminarExercicioFragment(exercicioSelecionado!!)
                 findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo("Eliminar Exercicio")
                 true
             }
             else -> false

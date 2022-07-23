@@ -136,6 +136,10 @@
         <action
             android:id="@+id/action_inserirExercicioFragment_to_listaExerciciosFragment"
             app:destination="@id/listaExerciciosFragment" />
+        <argument
+            android:name="exercicio"
+            app:argType="com.example.projetoprogramacaoavancada.database.Exercicio"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/eliminarExercicioFragment"

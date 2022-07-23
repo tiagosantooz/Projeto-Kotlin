@@ -25,10 +25,8 @@ class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     var exercicioSelecionado : Exercicio? = null
     get() = field
     set(value){
-        if(value != field){
-            field = value
-            (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field!= null)
-        }
+        field = value
+        (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field != null)
     }
     private var _binding: FragmentListaExerciciosBinding? = null
 

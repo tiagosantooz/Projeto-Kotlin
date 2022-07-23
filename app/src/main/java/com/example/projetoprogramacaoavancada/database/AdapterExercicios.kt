@@ -51,6 +51,7 @@ class AdapterExercicios (val fragment: ListaExerciciosFragment): RecyclerView.Ad
         private fun seleciona() {
             itemView.setBackgroundResource(android.R.color.holo_orange_light)
             viewHolderSelecionado = this
+            fragment.exercicioSelecionado = exercicio
         }
 
         private fun desseleciona() {

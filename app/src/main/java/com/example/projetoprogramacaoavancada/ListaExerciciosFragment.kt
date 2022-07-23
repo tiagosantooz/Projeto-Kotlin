@@ -14,12 +14,22 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetoprogramacaoavancada.database.AdapterExercicios
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
+import com.example.projetoprogramacaoavancada.database.Exercicio
 import com.example.projetoprogramacaoavancada.database.TabelaDBexercicio
 import com.example.projetoprogramacaoavancada.databinding.FragmentListaExerciciosBinding
 
 
 class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
+
+    var exercicioSelecionado : Exercicio? = null
+    get() = field
+    set(value){
+        if(value != field){
+            field = value
+            (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field!= null)
+        }
+    }
     private var _binding: FragmentListaExerciciosBinding? = null
 
     private val binding get() = _binding!!

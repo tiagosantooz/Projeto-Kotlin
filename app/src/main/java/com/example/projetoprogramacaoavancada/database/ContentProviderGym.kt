@@ -43,6 +43,8 @@ class ContentProviderGym : ContentProvider() {
             URI_ALIMENTO_ESPECIFICO -> TabelaDBalimento(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
             URI_EXERCICIOS -> TabelaDBexercicio(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
             URI_EXERCICIOS_ESPECIFICO -> TabelaDBexercicio(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
+            URI_MAQUINAS -> TabelaDBmaquina(db).query(colunas,selection,argsSeleccao,null, null, sortOrder)
+            URI_MAQUINA_ESPECIFICA -> TabelaDBmaquina(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("$id"), null, null,null)
 
             else -> null
         }
@@ -64,7 +66,8 @@ class ContentProviderGym : ContentProvider() {
             URI_ALIMENTO_ESPECIFICO -> "$UNICO_REGISTO/${TabelaDBalimento.NOME}"
             URI_EXERCICIOS -> "$MULTIPLOS_REGISTOS/${TabelaDBexercicio.NOME}"
             URI_EXERCICIOS_ESPECIFICO -> "$UNICO_REGISTO/${TabelaDBexercicio.NOME}"
-
+            URI_MAQUINAS -> "$MULTIPLOS_REGISTOS/${TabelaDBmaquina.NOME}"
+            URI_MAQUINA_ESPECIFICA -> "$UNICO_REGISTO/${TabelaDBmaquina.NOME}"
             else -> null
         }
 
@@ -80,6 +83,7 @@ class ContentProviderGym : ContentProvider() {
             URI_ALIMENTOS -> TabelaDBalimento(db).insert(values)
             URI_TREINOS -> TabelaDBtreino(db).insert(values)
             URI_EXERCICIOS -> TabelaDBexercicio(db).insert(values)
+            URI_MAQUINAS -> TabelaDBmaquina(db).insert(values)
 
             else -> -1
         }
@@ -103,6 +107,8 @@ class ContentProviderGym : ContentProvider() {
             URI_TREINO_ESPECIFICO -> TabelaDBtreino(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
             URI_ALIMENTO_ESPECIFICO -> TabelaDBalimento(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
             URI_EXERCICIOS_ESPECIFICO -> TabelaDBexercicio(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
+            URI_MAQUINA_ESPECIFICA -> TabelaDBmaquina(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
+
             else -> 0
         }
 
@@ -129,7 +135,7 @@ class ContentProviderGym : ContentProvider() {
             URI_TREINO_ESPECIFICO -> TabelaDBtreino(db).update(values, "${BaseColumns._ID}=?", arrayOf("$id"))
             URI_ALIMENTO_ESPECIFICO -> TabelaDBalimento(db).update(values, "${BaseColumns._ID}=?", arrayOf("$id"))
             URI_EXERCICIOS_ESPECIFICO -> TabelaDBexercicio(db).update(values, "${BaseColumns._ID}=?", arrayOf("$id"))
-
+            URI_MAQUINA_ESPECIFICA -> TabelaDBmaquina(db).update(values,"${BaseColumns._ID}=?", arrayOf("$id"))
             else -> 0
         }
 
@@ -151,6 +157,8 @@ class ContentProviderGym : ContentProvider() {
         private const val URI_ALIMENTO_ESPECIFICO = 401
         private const val URI_EXERCICIOS = 500
         private const val URI_EXERCICIOS_ESPECIFICO = 501
+        private const val URI_MAQUINAS = 600
+        private const val URI_MAQUINA_ESPECIFICA = 601
 
         private const val UNICO_REGISTO = "vnd.android.cursor.item"
         private const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
@@ -161,6 +169,7 @@ class ContentProviderGym : ContentProvider() {
         val ENDERECO_TREINOS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBtreino.NOME)
         val ENDERECO_EXERCICIOS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBexercicio.NOME)
         val ENDERECO_ALIMENTOS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBalimento.NOME)
+        val ENDERECO_MAQUINAS = Uri.withAppendedPath(ENDERECO_BASE, TabelaDBmaquina.NOME)
 
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
@@ -175,6 +184,8 @@ class ContentProviderGym : ContentProvider() {
             uriMatcher.addURI(AUTHORITY,"${TabelaDBalimento.NOME}/#", URI_ALIMENTO_ESPECIFICO)
             uriMatcher.addURI(AUTHORITY, TabelaDBexercicio.NOME, URI_EXERCICIOS)
             uriMatcher.addURI(AUTHORITY,"${TabelaDBexercicio.NOME}/#", URI_EXERCICIOS_ESPECIFICO)
+            uriMatcher.addURI(AUTHORITY,TabelaDBmaquina.NOME, URI_MAQUINAS)
+            uriMatcher.addURI(AUTHORITY,"${TabelaDBmaquina.NOME}/#", URI_MAQUINA_ESPECIFICA)
 
             return uriMatcher
         }

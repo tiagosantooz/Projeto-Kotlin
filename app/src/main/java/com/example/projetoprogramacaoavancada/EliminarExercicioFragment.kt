@@ -1,5 +1,6 @@
 package com.example.projetoprogramacaoavancada
 
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 
@@ -9,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
 
@@ -69,6 +71,18 @@ class EliminarExercicioFragment : Fragment() {
         }
 
     private fun eliminaExercicio() {
+        val alertDialog = AlertDialog.Builder(requireContext())
+
+        alertDialog.apply {
+            setTitle("Eliminar exercicio")
+            setMessage("Tem a certeza que pretende eliminar o exercicio?")
+            setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener { dialogInterface, i ->  })
+            setPositiveButton("Eliminar", DialogInterface.OnClickListener { dialogInterface, i -> confirmareliminaExercicio()})
+            show()
+        }
+    }
+
+    private fun confirmareliminaExercicio() {
         val enderecoExercicio = Uri.withAppendedPath(ContentProviderGym.ENDERECO_EXERCICIOS, "${exercicio.id}")
         val registosEliminados = requireActivity().contentResolver.delete(enderecoExercicio, null, null)
 

@@ -48,6 +48,11 @@ class FirstFragment : Fragment() {
             (activity as MainActivity).atualizaTitulo("Lista de Alimentos")
         }
 
+        binding.buttonExercise.setOnClickListener{
+            findNavController().navigate(R.id.action_FirstFragment_to_listaExerciciosFragment)
+
+        }
+
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_main

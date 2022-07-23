@@ -74,7 +74,7 @@ class InserirExercicioFragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        binding.spinnerMaquina.adapter = null
     }
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean =

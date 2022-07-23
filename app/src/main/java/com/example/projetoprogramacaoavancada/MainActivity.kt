@@ -73,6 +73,8 @@ class MainActivity : AppCompatActivity() {
             opcaoProcessada = (fragment as ListaExerciciosFragment).processaOpcaoMenu(item)
         } else if(fragment is InserirExercicioFragment){
             opcaoProcessada = (fragment as InserirExercicioFragment).processaOpcaoMenu(item)
+        } else if (fragment is EliminarExercicioFragment){
+            opcaoProcessada  =(fragment as EliminarExercicioFragment).processaOpcaoMenu(item)
         }
         else {
             opcaoProcessada = false

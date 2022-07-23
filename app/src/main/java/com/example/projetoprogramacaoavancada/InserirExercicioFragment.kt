@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SimpleCursorAdapter
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
@@ -60,7 +61,16 @@ class InserirExercicioFragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
 
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        val adapterMaquina = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaDBmaquina.CAMPO_NOME),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+
+        binding.spinnerMaquina.adapter = adapterMaquina
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {

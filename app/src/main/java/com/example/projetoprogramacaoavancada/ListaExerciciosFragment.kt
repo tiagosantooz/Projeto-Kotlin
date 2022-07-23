@@ -37,7 +37,7 @@ class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_EXERCICIOS, null, this)
 
-        adapterExercicio = AdapterExercicios()
+        adapterExercicio = AdapterExercicios(this)
         binding.ReciclerViewExercicio.adapter = adapterExercicio
         binding.ReciclerViewExercicio.layoutManager = LinearLayoutManager(requireContext())
 

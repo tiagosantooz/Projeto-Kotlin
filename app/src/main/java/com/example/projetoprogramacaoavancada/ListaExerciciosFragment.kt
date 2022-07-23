@@ -7,28 +7,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import com.example.projetoprogramacaoavancada.database.ContentProviderGym
+import com.example.projetoprogramacaoavancada.database.TabelaDBexercicio
+import com.example.projetoprogramacaoavancada.databinding.FragmentListaExerciciosBinding
 
 
 class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
+    private var _binding: FragmentListaExerciciosBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_exercicios, container, false)
+        _binding = FragmentListaExerciciosBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_EXERCICIOS, null, this)
     }
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderGym.ENDERECO_EXERCICIOS,
+            TabelaDBexercicio.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaDBexercicio.CAMPO_NOME}"
+        )
+
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         TODO("Not yet implemented")
@@ -36,5 +50,9 @@ class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val ID_LOADER_EXERCICIOS = 0
     }
 }

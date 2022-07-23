@@ -124,6 +124,9 @@
         <action
             android:id="@+id/action_listaExerciciosFragment_to_inserirExercicioFragment"
             app:destination="@id/inserirExercicioFragment" />
+        <action
+            android:id="@+id/action_listaExerciciosFragment_to_eliminarExercicioFragment"
+            app:destination="@id/eliminarExercicioFragment" />
     </fragment>
     <fragment
         android:id="@+id/inserirExercicioFragment"
@@ -133,6 +136,18 @@
         <action
             android:id="@+id/action_inserirExercicioFragment_to_listaExerciciosFragment"
             app:destination="@id/listaExerciciosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarExercicioFragment"
+        android:name="com.example.projetoprogramacaoavancada.EliminarExercicioFragment"
+        android:label="fragment_eliminar_exercicio"
+        tools:layout="@layout/fragment_eliminar_exercicio" >
+        <action
+            android:id="@+id/action_eliminarExercicioFragment_to_listaExerciciosFragment"
+            app:destination="@id/listaExerciciosFragment" />
+        <argument
+            android:name="exercicio"
+            app:argType="com.example.projetoprogramacaoavancada.database.Exercicio" />
     </fragment>
 
 

@@ -18,14 +18,19 @@ class AdapterExercicios (val fragment: ListaExerciciosFragment): RecyclerView.Ad
             }
         }
 
+    var viewHolderSelecionado : ViewHolderExercicio? = null
 
-    class ViewHolderExercicio(itemExercicio: View) : RecyclerView.ViewHolder(itemExercicio){
+    inner class ViewHolderExercicio(itemExercicio: View) : RecyclerView.ViewHolder(itemExercicio), View.OnClickListener{
         val textViewNome = itemExercicio.findViewById<TextView>(R.id.textViewNomeEx)
         val textViewDesc = itemExercicio.findViewById<TextView>(R.id.textViewDescEx)
         val textViewCarga = itemExercicio.findViewById<TextView>(R.id.textViewCargEx)
         val textViewRep = itemExercicio.findViewById<TextView>(R.id.textViewRepEx)
         val textViewMaquina = itemExercicio.findViewById<TextView>(R.id.textViewNomeMaqEx)
 
+
+        init{
+            itemExercicio.setOnClickListener(this)
+        }
         var exercicio : Exercicio? = null
             get() = field
             set(value : Exercicio?){
@@ -37,6 +42,20 @@ class AdapterExercicios (val fragment: ListaExerciciosFragment): RecyclerView.Ad
                 textViewRep.text = (exercicio?.repeticoes ?:"").toString()
                 textViewMaquina.text = exercicio?.maquina?.nome ?:""
             }
+
+        override fun onClick(v: View?) {
+            viewHolderSelecionado?.desseleciona()
+            seleciona()
+        }
+
+        private fun seleciona() {
+            itemView.setBackgroundResource(android.R.color.holo_orange_light)
+            viewHolderSelecionado = this
+        }
+
+        private fun desseleciona() {
+            itemView.setBackgroundResource(android.R.color.white)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderExercicio {

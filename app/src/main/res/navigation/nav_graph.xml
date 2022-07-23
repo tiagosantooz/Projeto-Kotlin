@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_listaAlimentosFragment"
             app:destination="@id/listaAlimentosFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_listaExerciciosFragment"
+            app:destination="@id/listaExerciciosFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -44,19 +47,6 @@
         <action
             android:id="@+id/action_treinoFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
-        <action
-            android:id="@+id/action_treinoFragment_to_exercicioFragment"
-            app:destination="@id/exercicioFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/exercicioFragment"
-        android:name="com.example.projetoprogramacaoavancada.exercicioFragment"
-        android:label="fragment_exercicio"
-        tools:layout="@layout/fragment_exercicio" >
-
-        <action
-            android:id="@+id/action_exercicioFragment_to_treinoFragment"
-            app:destination="@id/treinoFragment" />
     </fragment>
     <fragment
         android:id="@+id/listaUtilizadorFragment"
@@ -122,6 +112,15 @@
         <argument
             android:name="alimento"
             app:argType="com.example.projetoprogramacaoavancada.database.Alimento"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listaExerciciosFragment"
+        android:name="com.example.projetoprogramacaoavancada.ListaExerciciosFragment"
+        android:label="fragment_lista_exercicios"
+        tools:layout="@layout/fragment_lista_exercicios" >
+        <action
+            android:id="@+id/action_listaExerciciosFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
 
 

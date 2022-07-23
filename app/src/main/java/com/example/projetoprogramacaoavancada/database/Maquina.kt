@@ -5,7 +5,7 @@ import android.database.Cursor
 import android.provider.BaseColumns
 import java.io.Serializable
 
-data class Maquina(var nome : String ="", var id: Long = -1) : Serializable {
+data class Maquina(var nome : String = "", var id: Long = -1) : Serializable {
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
         valores.put(TabelaDBmaquina.CAMPO_NOME, nome)

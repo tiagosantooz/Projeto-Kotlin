@@ -4,8 +4,10 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projetoprogramacaoavancada.ListaExerciciosFragment
+import com.example.projetoprogramacaoavancada.R
 
-class AdapterExercicios : RecyclerView.Adapter<AdapterExercicios.ViewHolderExercicio>() {
+class AdapterExercicios (val fragment: ListaExerciciosFragment): RecyclerView.Adapter<AdapterExercicios.ViewHolderExercicio>() {
     var cursor: Cursor? = null
         get() = field
         set(value) {
@@ -21,7 +23,8 @@ class AdapterExercicios : RecyclerView.Adapter<AdapterExercicios.ViewHolderExerc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderExercicio {
-        TODO("Not yet implemented")
+        val itemExercicio = fragment.layoutInflater.inflate(R.layout.item_exercicio,parent,false)
+        return ViewHolderExercicio(itemExercicio)
     }
 
     override fun onBindViewHolder(holder: ViewHolderExercicio, position: Int) {
@@ -29,7 +32,9 @@ class AdapterExercicios : RecyclerView.Adapter<AdapterExercicios.ViewHolderExerc
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        if (cursor == null) return 0
+
+        return cursor!!.count
     }
 
 }

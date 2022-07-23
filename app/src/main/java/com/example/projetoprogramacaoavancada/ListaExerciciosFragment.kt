@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetoprogramacaoavancada.database.AdapterExercicios
 import com.example.projetoprogramacaoavancada.database.ContentProviderGym
@@ -69,7 +70,10 @@ class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
         when(item.itemId) {
-            R.id.action_inserir -> true
+            R.id.action_inserir -> {
+                findNavController().navigate(R.id.action_listaExerciciosFragment_to_inserirExercicioFragment)
+                true
+            }
             R.id.action_alterar -> true
             R.id.action_eliminar -> true
             else -> false

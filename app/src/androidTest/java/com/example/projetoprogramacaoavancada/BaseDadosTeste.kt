@@ -72,6 +72,7 @@ class BaseDadosTeste {
 
         insereDieta(db, dieta)
     }
+
     @Test
     fun consegueinserirAlimento(){
         val db = getWritableDatabase()
@@ -79,7 +80,7 @@ class BaseDadosTeste {
         val dieta = Dieta("sugar-free","Sem açucar",1)
         insereDieta(db, dieta)
 
-        val alimento = Alimento("couve",1,1,1)
+        val alimento = Alimento("couve",1,1)
         insereAlimento(db, alimento)
 
         db.close()
@@ -98,6 +99,18 @@ class BaseDadosTeste {
         insereMaquina(db, maquina2)
 
         db.close()
+    }
+
+    @Test
+    fun consegueinserirExercicio(){
+        val db = getWritableDatabase()
+
+        val maquina = Maquina("Bench Press")
+
+        val exercicio = Exercicio("Bench Press","Press de peito no banco",maquina, 5,5)
+
+        insereMaquina(db, maquina)
+        insereExercicio(db, exercicio)
     }
 
     @Test

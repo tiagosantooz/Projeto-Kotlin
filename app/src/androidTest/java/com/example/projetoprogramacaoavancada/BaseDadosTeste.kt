@@ -28,12 +28,12 @@ class BaseDadosTeste {
         dieta.id = TabelaDBdieta(db).insert(dieta.toContentValues())
         assertNotEquals(-1, dieta.id)
     }
-/*
+
     private fun insereExercicio(db: SQLiteDatabase, exercicio: Exercicio) {
         exercicio.id = TabelaDBexercicio(db).insert(exercicio.toContentValues())
         assertNotEquals(-1, exercicio.id)
     }
-
+/*
     private fun insereTreino(db: SQLiteDatabase, treino: Treino) {
         treino.id = TabelaDBalimento(db).insert(treino.toContentValues())
         assertNotEquals(-1, treino.id)
@@ -44,7 +44,10 @@ class BaseDadosTeste {
         assertNotEquals(-1, utilizador.id)
     }
 */
-
+    private fun insereMaquina(db : SQLiteDatabase, maquina: Maquina){
+        maquina.id = TabelaDBmaquina(db).insert(maquina.toContentValues())
+        assertNotEquals(-1, maquina.id)
+    }
 
     @Before
     fun apagaBaseDados() {
@@ -83,6 +86,19 @@ class BaseDadosTeste {
 
     }
 
+    @Test
+    fun consegueinserirMaquina(){
+        val db = getWritableDatabase()
+
+        val maquina1 = Maquina("Leg Press")
+
+        val maquina2 = Maquina("Bench Press")
+
+        insereMaquina(db, maquina1)
+        insereMaquina(db, maquina2)
+
+        db.close()
+    }
 
     @Test
     fun consegueAlterarDieta(){

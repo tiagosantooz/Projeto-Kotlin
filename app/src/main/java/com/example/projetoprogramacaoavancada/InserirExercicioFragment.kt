@@ -24,7 +24,9 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class InserirExercicioFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+
     private var _binding : FragmentInserirExercicioBinding? =null
+
     private val binding get() = _binding!!
 
     private var exercicio : Exercicio? = null
@@ -33,7 +35,8 @@ class InserirExercicioFragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentInserirExercicioBinding.inflate(inflater,container,false)
+
+        _binding = FragmentInserirExercicioBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -45,7 +48,6 @@ class InserirExercicioFragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
 
         val activity = activity as MainActivity
         activity.fragment = this
-
         activity.idMenuAtual = R.menu.menu_edicao
 
         if ( arguments!= null){

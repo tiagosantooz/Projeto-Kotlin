@@ -52,6 +52,7 @@ class ListaExerciciosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         binding.ReciclerViewExercicio.layoutManager = LinearLayoutManager(requireContext())
 
         val activity = activity as MainActivity
+        activity.fragment = this
         activity.idMenuAtual = R.menu.menu_lista
 
     }

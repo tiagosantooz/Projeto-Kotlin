@@ -12,9 +12,6 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_treinoFragment"
-            app:destination="@id/treinoFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_listaUtilizadorFragment"
             app:destination="@id/listaUtilizadorFragment" />
         <action
@@ -23,6 +20,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_listaExerciciosFragment"
             app:destination="@id/listaExerciciosFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_listaTreinoFragment"
+            app:destination="@id/listaTreinoFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -39,15 +39,6 @@
              />
     </fragment>
 
-    <fragment
-        android:id="@+id/treinoFragment"
-        android:name="com.example.projetoprogramacaoavancada.TreinoFragment"
-        android:label="fragment_treino"
-        tools:layout="@layout/fragment_treino" >
-        <action
-            android:id="@+id/action_treinoFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
     <fragment
         android:id="@+id/listaUtilizadorFragment"
         android:name="com.example.projetoprogramacaoavancada.ListaUtilizadorFragment"
@@ -152,6 +143,39 @@
         <argument
             android:name="exercicio"
             app:argType="com.example.projetoprogramacaoavancada.database.Exercicio" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaTreinoFragment"
+        android:name="com.example.projetoprogramacaoavancada.ListaTreinoFragment"
+        android:label="fragment_lista_treino"
+        tools:layout="@layout/fragment_lista_treino" >
+        <action
+            android:id="@+id/action_listaTreinoFragment_to_inserirTreinoFragment"
+            app:destination="@id/inserirTreinoFragment" />
+        <action
+            android:id="@+id/action_listaTreinoFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_listaTreinoFragment_to_eliminarTreinoFragment"
+            app:destination="@id/eliminarTreinoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inserirTreinoFragment"
+        android:name="com.example.projetoprogramacaoavancada.InserirTreinoFragment"
+        android:label="fragment_inserir_treino"
+        tools:layout="@layout/fragment_inserir_treino" >
+        <action
+            android:id="@+id/action_inserirTreinoFragment_to_listaTreinoFragment"
+            app:destination="@id/listaTreinoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarTreinoFragment"
+        android:name="com.example.projetoprogramacaoavancada.EliminarTreinoFragment"
+        android:label="fragment_eliminar_treino"
+        tools:layout="@layout/fragment_eliminar_treino" >
+        <action
+            android:id="@+id/action_eliminarTreinoFragment_to_listaTreinoFragment"
+            app:destination="@id/listaTreinoFragment" />
     </fragment>
 
 

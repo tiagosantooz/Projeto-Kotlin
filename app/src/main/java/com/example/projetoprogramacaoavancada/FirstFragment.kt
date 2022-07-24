@@ -39,7 +39,7 @@ class FirstFragment : Fragment() {
         }
 
         binding.button2.setOnClickListener{
-            findNavController().navigate(R.id.action_FirstFragment_to_treinoFragment)
+            findNavController().navigate(R.id.action_FirstFragment_to_listaTreinoFragment)
             (activity as MainActivity).atualizaTitulo("Lista de Treinos")
         }
 

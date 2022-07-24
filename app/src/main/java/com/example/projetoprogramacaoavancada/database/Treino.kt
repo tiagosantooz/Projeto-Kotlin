@@ -28,13 +28,26 @@ data class Treino(
             val posId = cursor.getColumnIndex(TabelaDBtreino.CAMPO_ID)
             val posDesc = cursor.getColumnIndex(TabelaDBtreino.CAMPO_DESCRICAO)
             val posIdUti = cursor.getColumnIndex(TabelaDBtreino.CAMPO_UTILIZADOR_ID)
+
             val posNomeUti = cursor.getColumnIndex(TabelaDButilizador.CAMPO_NOME)
+            val posSexoUtilizador = cursor.getColumnIndex(TabelaDButilizador.CAMPO_SEXO)
+            val posIdadeUtilizador = cursor.getColumnIndex(TabelaDButilizador.CAMPO_IDADE)
+            val posAlturaUtilizador = cursor.getColumnIndex(TabelaDButilizador.CAMPO_ALTURA)
+            val posPesoUtilizador = cursor.getColumnIndex(TabelaDButilizador.CAMPO_PESO)
+
 
             val id = cursor.getLong(posId)
             val descricao = cursor.getString(posDesc)
+
+
             val idUtilizador = cursor.getLong(posIdUti)
             val nomeUtilizador = cursor.getString(posNomeUti)
-            val utilizador = Utilizador(nomeUtilizador, null, null, null, idUtilizador)
+            val sexoUtilizador = cursor.getString(posSexoUtilizador)
+            val alturaUtilizador = cursor.getLong(posAlturaUtilizador)
+            val pesoUtilizador = cursor.getLong(posPesoUtilizador)
+            val idadeUtilizador = cursor.getLong(posIdadeUtilizador)
+
+            val utilizador = Utilizador(nomeUtilizador, sexoUtilizador, idadeUtilizador, pesoUtilizador, alturaUtilizador,idUtilizador)
 
             return Treino(descricao,utilizador,id)
         }

@@ -8,10 +8,10 @@ import java.io.Serializable
 data class Utilizador(
 
     var nome: String = "",
-    var sexo: String? = "",
-    var idade: Long? = -1,
-    var peso: Long? = -1,
-    var altura: Long = -1,
+    var sexo: String = "",
+    var idade: Long = 0,
+    var peso: Long = 0,
+    var altura: Long = 0,
     var id: Long = -1
 ) : Serializable {
     fun toContentValues() : ContentValues {

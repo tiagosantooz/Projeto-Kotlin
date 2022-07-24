@@ -10,7 +10,7 @@ class TabelaDBtreino(db: SQLiteDatabase) : TabelaDb(db, NOME){
         db.execSQL("CREATE TABLE $NOME (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT , " +
                 "$CAMPO_DESCRICAO TEXT NOT NULL , " +
                 "$CAMPO_UTILIZADOR_ID INTEGER NOT NULL , " +
-                "FOREIGN KEY ($CAMPO_UTILIZADOR_ID) REFERENCES ${TabelaDButilizador.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+                "FOREIGN KEY ($CAMPO_UTILIZADOR_ID) REFERENCES ${TabelaDButilizador.NOME}(${TabelaDButilizador.CAMPO_ID}) ON DELETE RESTRICT)")
     }
     override fun query(
         columns: Array<String>,

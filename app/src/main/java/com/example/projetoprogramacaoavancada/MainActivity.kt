@@ -75,6 +75,12 @@ class MainActivity : AppCompatActivity() {
             opcaoProcessada = (fragment as InserirExercicioFragment).processaOpcaoMenu(item)
         } else if (fragment is EliminarExercicioFragment){
             opcaoProcessada  =(fragment as EliminarExercicioFragment).processaOpcaoMenu(item)
+        }else if (fragment is ListaTreinoFragment){
+            opcaoProcessada = (fragment as ListaTreinoFragment).processaOpcaoMenu(item)
+        } else if(fragment is InserirTreinoFragment){
+            opcaoProcessada = (fragment as InserirTreinoFragment).processaOpcaoMenu(item)
+        } else if (fragment is EliminarTreinoFragment){
+            opcaoProcessada  =(fragment as EliminarTreinoFragment).processaOpcaoMenu(item)
         }
         else {
             opcaoProcessada = false

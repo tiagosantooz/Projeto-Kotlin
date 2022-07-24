@@ -167,6 +167,10 @@
         <action
             android:id="@+id/action_inserirTreinoFragment_to_listaTreinoFragment"
             app:destination="@id/listaTreinoFragment" />
+        <argument
+        android:name="treino"
+        app:argType="com.example.projetoprogramacaoavancada.database.Treino"
+        app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/eliminarTreinoFragment"
@@ -176,6 +180,9 @@
         <action
             android:id="@+id/action_eliminarTreinoFragment_to_listaTreinoFragment"
             app:destination="@id/listaTreinoFragment" />
+        <argument
+            android:name="treino"
+            app:argType="com.example.projetoprogramacaoavancada.database.Treino" />
     </fragment>
 
 

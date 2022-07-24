@@ -91,6 +91,8 @@ class InserirExercicioFragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
         )
 
         binding.spinnerMaquina.adapter = adapterMaquina
+
+        atualizaMaquinaSelecionada()
     }
 
     private fun atualizaMaquinaSelecionada() {

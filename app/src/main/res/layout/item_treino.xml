@@ -6,31 +6,17 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textViewNomeTreino"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="As Delícias de Ella" />
-
-    <TextView
         android:id="@+id/textViewDescTreino"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/textViewNomeTreino"
-        app:layout_constraintStart_toStartOf="@+id/textViewNomeTreino"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeTreino"
-        tools:text="Ella Woodward" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hipertrofia" />
 
     <TextView
         android:id="@+id/textViewUtTreino"
@@ -40,5 +26,5 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewDescTreino"
         app:layout_constraintStart_toStartOf="@+id/textViewDescTreino"
         app:layout_constraintTop_toBottomOf="@+id/textViewDescTreino"
-        tools:text="Culinária" />
+        tools:text="Tiago Santos" />
 </androidx.constraintlayout.widget.ConstraintLayout>

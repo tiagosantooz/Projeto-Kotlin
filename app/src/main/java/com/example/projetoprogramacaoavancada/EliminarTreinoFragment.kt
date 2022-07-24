@@ -1,59 +1,102 @@
 package com.example.projetoprogramacaoavancada
 
+import android.content.DialogInterface
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.projetoprogramacaoavancada.database.ContentProviderGym
+import com.example.projetoprogramacaoavancada.database.Treino
+import com.example.projetoprogramacaoavancada.databinding.FragmentEliminarTreinoBinding
+import com.google.android.material.snackbar.Snackbar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EliminarTreinoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EliminarTreinoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+    private var _binding : FragmentEliminarTreinoBinding? = null
+
+    private val binding get() = _binding!!
+
+    private lateinit var treino: Treino
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_eliminar_treino, container, false)
+        _binding = FragmentEliminarTreinoBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EliminarTreinoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EliminarTreinoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val activity = requireActivity() as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_eliminar
+
+        treino = EliminarTreinoFragmentArgs.fromBundle(requireArguments()).treino
+
+        binding.textViewDeleteDescTreino.text = treino.descricao
+        binding.textViewDeleteUtiTreino.text = treino.utilizador.nome
+    }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean =
+        when(item.itemId) {
+            R.id.action_eliminar -> {
+                eliminaTreino()
+                true
+            }
+            R.id.action_cancelar -> {
+                voltaListaTreino()
+                true
+            }
+            else -> false
+        }
+
+    private fun eliminaTreino() {
+        val alertDialog = AlertDialog.Builder(requireContext())
+
+        alertDialog.apply {
+            setTitle("Eliminar treino")
+            setMessage("Tem a certeza que pretende eliminar o treino?")
+            setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener { dialogInterface, i ->  })
+            setPositiveButton("Eliminar", DialogInterface.OnClickListener { dialogInterface, i -> confirmareliminaTreino()})
+            show()
+        }
+    }
+
+    private fun confirmareliminaTreino() {
+        val enderecoTreino = Uri.withAppendedPath(ContentProviderGym.ENDERECO_TREINOS, "${treino.id}")
+        val registosEliminados = requireActivity().contentResolver.delete(enderecoTreino, null, null)
+
+        if (registosEliminados != 1) {
+            Snackbar.make(
+                binding.textViewDeleteDescTreino,
+                "Erro eliminar treino",
+                Snackbar.LENGTH_INDEFINITE
+            ).show()
+            return
+        }
+
+        Toast.makeText(requireContext(), "Treino eliminado com sucesso!", Toast.LENGTH_LONG).show()
+        voltaListaTreino()
+    }
+
+    private fun voltaListaTreino() {
+        val acao = EliminarTreinoFragmentDirections.actionEliminarTreinoFragmentToListaTreinoFragment()
+        findNavController().navigate(acao)
+    }
+
 }

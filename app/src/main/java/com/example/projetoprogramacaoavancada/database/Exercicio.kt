@@ -45,7 +45,6 @@ data class Exercicio(
             val descricao = cursor.getString(posDesc)
             val carga = cursor.getLong(posCarga)
             val repeticoes = cursor.getLong(posRep)
-
             val idMaquina = cursor.getLong(posIdMaq)
             val nomeMaquina = cursor.getString(posNomeMaq)
             val maquina = Maquina(nomeMaquina, idMaquina)

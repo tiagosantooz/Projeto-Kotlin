@@ -1,59 +1,188 @@
 package com.example.projetoprogramacaoavancada
 
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SimpleCursorAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
+import com.example.projetoprogramacaoavancada.database.ContentProviderGym
+import com.example.projetoprogramacaoavancada.database.TabelaDButilizador
+import com.example.projetoprogramacaoavancada.database.Treino
+import com.example.projetoprogramacaoavancada.database.Utilizador
+import com.example.projetoprogramacaoavancada.databinding.FragmentInserirTreinoBinding
+import com.google.android.material.snackbar.Snackbar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [InserirTreinoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class InserirTreinoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class InserirTreinoFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding : FragmentInserirTreinoBinding? =null
+
+    private val binding get() = _binding!!
+
+    private var treino : Treino? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inserir_treino, container, false)
+
+        _binding = FragmentInserirTreinoBinding.inflate(inflater, container, false)
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADORES, null, this)
+
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_edicao
+
+        if ( arguments!= null){
+            treino = InserirTreinoFragmentArgs.fromBundle(requireArguments()).treino
+
+            if (treino != null){
+                binding.editTextDescTreino.setText(treino!!.descricao)
+            }
+
+        }
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_UTILIZADORES, null, this)
+
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InserirTreinoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InserirTreinoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        const val ID_LOADER_UTILIZADORES = 0
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderGym.ENDERECO_UTILIZADORES,
+            TabelaDButilizador.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaDButilizador.CAMPO_NOME}"
+        )
+
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        val adapterUtilizador = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaDButilizador.CAMPO_NOME),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+
+        binding.spinnerUtiTreino.adapter = adapterUtilizador
+
+        atualizaUtilizadorSelecionado()
+    }
+
+    private fun atualizaUtilizadorSelecionado() {
+        if (treino == null) return
+        val idUtilizador = treino!!.utilizador.id
+
+        val ultimoUtilizador = binding.spinnerUtiTreino.count - 1
+
+        for (i in 0..ultimoUtilizador) {
+            if (binding.spinnerUtiTreino.getItemIdAtPosition(i) == idUtilizador) {
+                binding.spinnerUtiTreino.setSelection(i)
+                return
             }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        if (binding == null )return
+        binding.spinnerUtiTreino.adapter = null
+    }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean =
+        when(item.itemId) {
+            R.id.action_guardar -> {
+                guardar()
+                true
+            }
+            R.id.action_cancelar -> {
+                voltaListaTreino()
+                true
+            }
+            else -> false
+        }
+
+    private fun guardar(){
+
+        val descricao = binding.editTextDescTreino.text.toString()
+        if (descricao.isBlank()){
+            binding.editTextDescTreino.error = "Descrição obrigatória"
+            binding.editTextDescTreino.requestFocus()
+            return
+        }
+
+        val utilizador = binding.spinnerUtiTreino.selectedItemId
+        if (utilizador == Spinner.INVALID_ROW_ID){
+            binding.textView3.error = "Utilizador obrigatório"
+            binding.textView3.requestFocus()
+            return
+        }
+
+        val treinoGuardado =
+            if(treino == null){
+                insereTreino(descricao, utilizador)
+            }
+            else {
+                alteraExercicio(descricao, utilizador)
+            }
+
+        if(treinoGuardado){
+            Toast.makeText(requireContext(), "Treino guardado com sucesso!", Toast.LENGTH_LONG)
+                .show()
+            voltaListaTreino()
+        } else {
+            Snackbar.make(binding.editTextDescTreino, "Erro guardar treino", Snackbar.LENGTH_INDEFINITE).show()
+            return
+        }
+    }
+
+
+    private fun insereTreino(descricao: String, utilizador : Long): Boolean {
+        val treino = Treino(descricao, Utilizador(id = utilizador))
+
+        val enderecoTreinoInserido = requireActivity().contentResolver.insert(ContentProviderGym.ENDERECO_TREINOS, treino.toContentValues())
+
+        return enderecoTreinoInserido != null
+    }
+    private fun alteraExercicio(descricao: String, utilizador : Long) : Boolean {
+        val treino = Treino(descricao, Utilizador(id = utilizador))
+
+        val enderecoTreino = Uri.withAppendedPath(ContentProviderGym.ENDERECO_TREINOS, "${this.treino!!.id}")
+
+        val registosAlterados = requireActivity().contentResolver.update(enderecoTreino, treino.toContentValues(), null, null)
+
+        return registosAlterados == 1
+    }
+
+
+    private fun voltaListaTreino() {
+        findNavController().navigate(R.id.action_inserirTreinoFragment_to_listaTreinoFragment)
     }
 }

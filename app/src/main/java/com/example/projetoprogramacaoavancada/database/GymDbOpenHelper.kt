@@ -22,6 +22,7 @@ class GymDbOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME, null,
         TabelaDBexercicio(db).cria()
         TabelaDBtreinoExercicio(db).cria()
         TabelaDBdietaAlimento(db).cria()
+        TabelaDBmaquina(db).cria()
 
 
     }
@@ -54,7 +55,7 @@ class GymDbOpenHelper(context: Context?) : SQLiteOpenHelper(context, NOME, null,
 
     companion object {
         const val NOME = "gym.db"
-        private const val VERSAO = 1
+        private const val VERSAO = 4
     }
 }
 

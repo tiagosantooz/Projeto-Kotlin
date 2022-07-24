@@ -35,9 +35,7 @@ class TreinoFragment : Fragment() {
             findNavController().navigate(R.id.action_treinoFragment_to_FirstFragment)
         }
 
-        binding.button7.setOnClickListener {
-            findNavController().navigate(R.id.action_treinoFragment_to_exercicioFragment)
-        }
+
 
     }
 

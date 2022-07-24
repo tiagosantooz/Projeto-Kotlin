@@ -1,6 +1,8 @@
 package com.example.projetoprogramacaoavancada.database
 
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteQueryBuilder
 import android.provider.BaseColumns
 
 class TabelaDBtreino(db: SQLiteDatabase) : TabelaDb(db, NOME){
@@ -10,12 +12,25 @@ class TabelaDBtreino(db: SQLiteDatabase) : TabelaDb(db, NOME){
                 "$CAMPO_UTILIZADOR_ID INTEGER NOT NULL , " +
                 "FOREIGN KEY ($CAMPO_UTILIZADOR_ID) REFERENCES ${TabelaDButilizador.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
+    override fun query(
+        columns: Array<String>,
+        selection: String?,
+        selectionArgs: Array<String>?,
+        groupBy: String?,
+        having: String?,
+        orderBy: String?
+    ): Cursor {
+        val queryBuilder = SQLiteQueryBuilder()
+        queryBuilder.tables = "$NOME INNER JOIN ${TabelaDButilizador.NOME} ON ${TabelaDButilizador.CAMPO_ID} = $CAMPO_UTILIZADOR_ID"
 
+        return queryBuilder.query(db, columns, selection, selectionArgs, groupBy, having, orderBy)
+    }
     companion object {
         const val NOME = "pa_treino"
+        const val CAMPO_ID = "${TabelaDBexercicio.NOME}.${BaseColumns._ID}"
         const val CAMPO_DESCRICAO = "descricao"
         const val CAMPO_UTILIZADOR_ID = "utilizadorid"
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_DESCRICAO, CAMPO_UTILIZADOR_ID)
+        val TODAS_COLUNAS = arrayOf(CAMPO_ID, CAMPO_DESCRICAO, CAMPO_UTILIZADOR_ID, TabelaDButilizador.CAMPO_NOME)
     }
 }

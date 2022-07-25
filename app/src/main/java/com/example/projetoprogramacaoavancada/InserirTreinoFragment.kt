@@ -112,7 +112,7 @@ class InserirTreinoFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        if (binding == null )return
+        if (_binding == null ) return
         binding.spinnerUtiTreino.adapter = null
     }
 

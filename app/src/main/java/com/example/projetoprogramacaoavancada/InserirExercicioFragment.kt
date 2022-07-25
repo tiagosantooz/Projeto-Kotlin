@@ -115,7 +115,7 @@ class InserirExercicioFragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        if (binding == null )return
+        if (_binding == null )return
         binding.spinnerMaquina.adapter = null
     }
 

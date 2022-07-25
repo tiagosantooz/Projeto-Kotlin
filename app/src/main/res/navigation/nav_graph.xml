@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.projetoprogramacaoavancada.FirstFragment"
-        android:label="@string/first_fragment_label"
+        android:label="Menu Principal"
         tools:layout="@layout/fragment_first">
 
         <action
@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.projetoprogramacaoavancada.SecondFragment"
-        android:label="@string/second_fragment_label"
+        android:label="Inserir Utilizador"
         tools:layout="@layout/fragment_second">
         <action
             android:id="@+id/action_SecondFragment_to_listaUtilizadorFragment"
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/listaUtilizadorFragment"
         android:name="com.example.projetoprogramacaoavancada.ListaUtilizadorFragment"
-        android:label="fragment_lista_utilizador"
+        android:label="Lista de Utilizadores"
         tools:layout="@layout/fragment_lista_utilizador" >
         <action
             android:id="@+id/action_listaUtilizadorFragment_to_SecondFragment"
@@ -66,7 +66,7 @@
     <fragment
         android:id="@+id/listaAlimentosFragment"
         android:name="com.example.projetoprogramacaoavancada.ListaAlimentosFragment"
-        android:label="fragment_lista_alimentos"
+        android:label="Lista de Alimentos"
         tools:layout="@layout/fragment_lista_alimentos" >
         <action
             android:id="@+id/action_listaAlimentosFragment_to_FirstFragment"
@@ -81,7 +81,7 @@
     <fragment
         android:id="@+id/inserirAlimento"
         android:name="com.example.projetoprogramacaoavancada.InserirAlimento"
-        android:label="fragment_inserir_alimento"
+        android:label="Inserir Alimento"
         tools:layout="@layout/fragment_inserir_alimento" >
         <action
             android:id="@+id/action_inserirAlimento_to_listaAlimentosFragment"
@@ -95,7 +95,7 @@
     <fragment
         android:id="@+id/eliminarAlimentoFragment"
         android:name="com.example.projetoprogramacaoavancada.EliminarAlimentoFragment"
-        android:label="fragment_eliminar_alimento"
+        android:label="Eliminar Alimento"
         tools:layout="@layout/fragment_eliminar_alimento" >
         <action
             android:id="@+id/action_eliminarAlimentoFragment_to_listaAlimentosFragment"
@@ -107,7 +107,7 @@
     <fragment
         android:id="@+id/listaExerciciosFragment"
         android:name="com.example.projetoprogramacaoavancada.ListaExerciciosFragment"
-        android:label="fragment_lista_exercicios"
+        android:label="Lista de Exercícios"
         tools:layout="@layout/fragment_lista_exercicios" >
         <action
             android:id="@+id/action_listaExerciciosFragment_to_FirstFragment"
@@ -122,7 +122,7 @@
     <fragment
         android:id="@+id/inserirExercicioFragment"
         android:name="com.example.projetoprogramacaoavancada.InserirExercicioFragment"
-        android:label="fragment_inserir_exercicio"
+        android:label="Inserir Exercício"
         tools:layout="@layout/fragment_inserir_exercicio" >
         <action
             android:id="@+id/action_inserirExercicioFragment_to_listaExerciciosFragment"
@@ -135,7 +135,7 @@
     <fragment
         android:id="@+id/eliminarExercicioFragment"
         android:name="com.example.projetoprogramacaoavancada.EliminarExercicioFragment"
-        android:label="fragment_eliminar_exercicio"
+        android:label="Eliminar Exercício"
         tools:layout="@layout/fragment_eliminar_exercicio" >
         <action
             android:id="@+id/action_eliminarExercicioFragment_to_listaExerciciosFragment"
@@ -147,7 +147,7 @@
     <fragment
         android:id="@+id/listaTreinoFragment"
         android:name="com.example.projetoprogramacaoavancada.ListaTreinoFragment"
-        android:label="fragment_lista_treino"
+        android:label="Lista de Treinos"
         tools:layout="@layout/fragment_lista_treino" >
         <action
             android:id="@+id/action_listaTreinoFragment_to_inserirTreinoFragment"
@@ -162,7 +162,7 @@
     <fragment
         android:id="@+id/inserirTreinoFragment"
         android:name="com.example.projetoprogramacaoavancada.InserirTreinoFragment"
-        android:label="fragment_inserir_treino"
+        android:label="Inserir Treino"
         tools:layout="@layout/fragment_inserir_treino" >
         <action
             android:id="@+id/action_inserirTreinoFragment_to_listaTreinoFragment"
@@ -175,7 +175,7 @@
     <fragment
         android:id="@+id/eliminarTreinoFragment"
         android:name="com.example.projetoprogramacaoavancada.EliminarTreinoFragment"
-        android:label="fragment_eliminar_treino"
+        android:label="Eliminar Treino"
         tools:layout="@layout/fragment_eliminar_treino" >
         <action
             android:id="@+id/action_eliminarTreinoFragment_to_listaTreinoFragment"

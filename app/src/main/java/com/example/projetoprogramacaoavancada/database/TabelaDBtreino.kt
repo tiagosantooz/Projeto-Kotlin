@@ -27,10 +27,11 @@ class TabelaDBtreino(db: SQLiteDatabase) : TabelaDb(db, NOME){
     }
     companion object {
         const val NOME = "pa_treino"
-        const val CAMPO_ID = "${TabelaDBexercicio.NOME}.${BaseColumns._ID}"
+        const val CAMPO_ID = "${TabelaDBtreino.NOME}.${BaseColumns._ID}"
         const val CAMPO_DESCRICAO = "descricao"
         const val CAMPO_UTILIZADOR_ID = "utilizadorid"
 
-        val TODAS_COLUNAS = arrayOf(CAMPO_ID, CAMPO_DESCRICAO, CAMPO_UTILIZADOR_ID, TabelaDButilizador.CAMPO_NOME)
+        val TODAS_COLUNAS = arrayOf(CAMPO_ID, CAMPO_DESCRICAO, CAMPO_UTILIZADOR_ID, TabelaDButilizador.CAMPO_NOME, TabelaDButilizador.CAMPO_ALTURA,
+        TabelaDButilizador.CAMPO_SEXO, TabelaDButilizador.CAMPO_IDADE, TabelaDButilizador.CAMPO_PESO)
     }
 }

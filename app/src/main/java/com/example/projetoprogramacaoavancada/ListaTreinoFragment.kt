@@ -59,8 +59,8 @@ class ListaTreinoFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
         CursorLoader(
             requireContext(),
-            ContentProviderGym.ENDERECO_EXERCICIOS,
-            TabelaDBexercicio.TODAS_COLUNAS,
+            ContentProviderGym.ENDERECO_TREINOS,
+            TabelaDBtreino.TODAS_COLUNAS,
             null,
             null,
             "${TabelaDBtreino.CAMPO_DESCRICAO}"

@@ -55,8 +55,8 @@ class AdapterTreino (val fragment: ListaTreinoFragment): RecyclerView.Adapter<Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTreino {
-        val itemExercicio = fragment.layoutInflater.inflate(R.layout.item_exercicio,parent,false)
-        return ViewHolderTreino(itemExercicio)
+        val itemTreino = fragment.layoutInflater.inflate(R.layout.item_treino,parent,false)
+        return ViewHolderTreino(itemTreino)
     }
 
     override fun onBindViewHolder(holder: ViewHolderTreino, position: Int) {

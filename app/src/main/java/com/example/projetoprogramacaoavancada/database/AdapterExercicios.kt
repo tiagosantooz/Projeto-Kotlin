@@ -65,7 +65,7 @@ class AdapterExercicios (val fragment: ListaExerciciosFragment): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolderExercicio, position: Int) {
-   cursor!!.moveToPosition(position)
+        cursor!!.moveToPosition(position)
         holder.exercicio = Exercicio.fromCursor(cursor!!)
     }
 

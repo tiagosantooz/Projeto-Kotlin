@@ -15,19 +15,19 @@
             android:id="@+id/textViewNomeAlimentoDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tiago" />
+            android:text="@string/tiago" />
 
         <TextView
             android:id="@+id/textViewQuantidadeDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Feminino" />
+            android:text="@string/feminino" />
 
         <TextView
             android:id="@+id/textViewCaloriasDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="24" />
+            android:text="@string/_24" />
 
     </LinearLayout>
 

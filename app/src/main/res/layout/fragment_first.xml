@@ -6,73 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <TextView
-        android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Gestão de Treino e Dieta"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textSize="30sp"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="205dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_baseline_ballot_24"
+        android:text="@string/treino"
+        app:cornerRadius="@dimen/fab_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/buttonExercise"
+        android:layout_width="205dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_baseline_pedal_bike_24"
+        android:text="@string/exerc_cio"
+        app:cornerRadius="@dimen/fab_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAliment"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="205dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_baseline_ballot_24"
+        android:text="@string/dieta"
+        app:cornerRadius="@dimen/fab_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_first"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/button_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Utilizador"
+        android:layout_width="205dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:text="@string/utilizador"
         app:cornerRadius="@dimen/fab_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Dieta"
-        app:cornerRadius="@dimen/fab_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_first" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Treino"
-        app:cornerRadius="@dimen/fab_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.106"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/buttonAliment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Alimento"
+        android:layout_width="205dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_baseline_fastfood_24"
+        android:text="@string/alimento"
         app:cornerRadius="@dimen/fab_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        tools:ignore="TextContrastCheck" />
 
-    <Button
-        android:id="@+id/buttonExercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="241dp"
+        android:layout_height="256dp"
         android:layout_marginTop="16dp"
-        android:text="Exercício"
-        app:cornerRadius="@dimen/fab_margin"
+        android:contentDescription="@string/logotipo"
+        android:src="@drawable/logotipo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAliment" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

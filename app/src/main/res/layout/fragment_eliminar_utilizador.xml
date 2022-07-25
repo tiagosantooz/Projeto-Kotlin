@@ -18,31 +18,31 @@
             android:id="@+id/textViewNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview" />
 
         <TextView
             android:id="@+id/textViewSexo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview" />
 
         <TextView
             android:id="@+id/textViewIdade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview" />
 
         <TextView
             android:id="@+id/textViewPeso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="70" />
+            android:text="@string/textview" />
 
         <TextView
             android:id="@+id/textViewAltura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="181" />
+            android:text="@string/textview" />
 
     </LinearLayout>
 

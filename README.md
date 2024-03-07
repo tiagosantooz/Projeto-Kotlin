@@ -1,5 +1,5 @@
-# ProjetoProgramacaoAvancada
-GymApp-ProgramacaoAvancada
+# Projeto-Kotlin
+GymApp - Kotlin
 
 
 A aplicação destina-se a utilizadores de um ginásio fictício, onde eles puderam introduzir os mais diversos tipos de informação. 
